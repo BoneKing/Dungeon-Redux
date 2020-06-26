@@ -1,0 +1,12 @@
+/Users/andy/Documents/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.csprojAssemblyReference.cache
+/Users/andy/Documents/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.AssemblyInfoInputs.cache
+/Users/andy/Documents/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.AssemblyInfo.cs
+/Users/andy/Documents/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.csproj.CoreCompileInputs.cache
+/Users/andy/Documents/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.deps.json
+/Users/andy/Documents/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.runtimeconfig.json
+/Users/andy/Documents/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.runtimeconfig.dev.json
+/Users/andy/Documents/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.dll
+/Users/andy/Documents/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.pdb
+/Users/andy/Documents/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.dll
+/Users/andy/Documents/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.pdb
+/Users/andy/Documents/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.genruntimeconfig.cache
