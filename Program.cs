@@ -15,16 +15,13 @@ namespace Dungeon_Redux
                 String highScoreName = "None";
             }
             */
-            while (gameRunning == true)
+            Time time = new Time();
+            time.initTime();
+            time.runTime();
+            Player player = new Player();
+            while (!player.getdead() || !time.endTime())
             {
-                Time time = new Time();
-                time.initTime();
-                time.runTime();
-                for(int i =0;i<100;i++){
-                    time.printTime();
-                }
-                Console.WriteLine("DONE!");
-                gameRunning = false;
+                
             }
         }
     }

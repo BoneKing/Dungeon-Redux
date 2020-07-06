@@ -12,8 +12,8 @@ namespace Dungeon_Redux
             day = 1;
             hour = 0;
             minute = 0;
-            second = 0;
-            Console.WriteLine("Day: " + day + " at " + hour + ":" + minute + ":" + second); 
+            //second = 0;
+            Console.WriteLine("Day: " + day + " at " + hour + ":" + minute); 
         }
         public void runTime()
         {
@@ -32,9 +32,10 @@ namespace Dungeon_Redux
                 if(second > 59) {
                     minute = minute + 1;
                     second = 0;
+                    Console.WriteLine("Day: "+ day+ " at "+hour+":"+minute);
                 }
                 else if(second < 60) {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(1);
                     second++;
                 } 
                 //Console.WriteLine("Day: " + day + " at " + hour + ":" + minute + ":" + second);
@@ -44,10 +45,24 @@ namespace Dungeon_Redux
                 hour = 0;
                 minute = 0;
                 second = 0;
+                endTime();
             }
         }
         public void printTime(){
-            Console.WriteLine("Day {0} at {1}:{2}:{3}",day,hour, minute, second);
+            Console.WriteLine("Day {0} at {1}:{2}",day,hour, minute);
+        }
+        public bool endTime(){
+            Console.WriteLine("End of Day 7, Mission Accomplished!");
+            return true;
+        }
+        public int getDay(){
+            return day;
+        }
+        public int getHour(){
+            return hour;
+        }
+        public int getMinute(){
+            return minute;
         }
     }
 }
