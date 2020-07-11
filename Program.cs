@@ -19,8 +19,10 @@ namespace Dungeon_Redux
             time.initTime();
             time.runTime();
             Player player = new Player();
-            while (!player.getdead() || !time.endTime())
+            while (!player.getdead() && !time.endTime())
             {
+                Console.WriteLine("Welcome to the Dungeon \n Survive all 7 days to win!");
+                time.printTime();
                 
             }
         }

@@ -17,7 +17,7 @@ namespace Dungeon_Redux
         }
         public void runTime()
         {
-            while(day <=7 ){
+            while(day < 8 ){
                 if(minute > 59) {
                     hour = hour + 1;
                     minute = 0;
@@ -26,7 +26,9 @@ namespace Dungeon_Redux
                     day = day +1;
                     hour = 0;
                     if (day > 7) {
-                        day = 1;
+                        Console.WriteLine("larger than 7");
+                        Console.WriteLine("going to endTime");
+                        endTime();
                     }
                 }
                 if(second > 59) {
@@ -40,13 +42,6 @@ namespace Dungeon_Redux
                 } 
                 //Console.WriteLine("Day: " + day + " at " + hour + ":" + minute + ":" + second);
             }   
-            if(day > 7) {
-                day = 1;
-                hour = 0;
-                minute = 0;
-                second = 0;
-                endTime();
-            }
         }
         public void printTime(){
             Console.WriteLine("Day {0} at {1}:{2}",day,hour, minute);
