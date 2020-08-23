@@ -2,11 +2,11 @@ using System;
 
 namespace Dungeon_Redux
 {
-    public class TutorialBunny{
-        public int health, attackDmg;
+    public class TutorialBunny : Enemy{
         public void NewBunny(){
-            health = 5;
-            attackDmg = 1;
+            this.health = 5;
+            this.attackDmg = 1;
+            this.name = "Tutorial Bunny";
         }
         public int getHealth(){
             return health;

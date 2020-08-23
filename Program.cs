@@ -7,7 +7,6 @@ namespace Dungeon_Redux
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             bool gameRunning = true;
             int score = 0;
             /*
@@ -24,14 +23,11 @@ namespace Dungeon_Redux
             //time.runTime();
             Player p1 = new Player();
             p1.NewPlayer();
-            Console.WriteLine("HERE");
-            Console.WriteLine(p1.getdead());
-            Console.WriteLine(time.endTime());
             //GAME LOOP
             while (!p1.getdead() && !time.endTime())
             {
-                Console.WriteLine("Welcome to the Dungeon \n Survive all 7 days to win!");
-                Console.WriteLine("Would you like the Tutorial? y/n");
+                Console.WriteLine("\nWelcome to the Dungeon \n Survive all 7 days to win!");
+                Console.WriteLine("\nWould you like the Tutorial? y/n");
                 if(Console.ReadLine() == "y"){
                     Tutorial(p1);
                 }
@@ -39,14 +35,13 @@ namespace Dungeon_Redux
             }
         }
         static void Tutorial(Player p1){
-            Console.WriteLine("In this game you'll find yourself fighting enemies at random times");
-            Console.WriteLine("you must manage your stamina and health well iff you expect to last all 7 days");
+            Console.WriteLine("\nIn this game you'll find yourself fighting enemies at random times");
+            Console.WriteLine("you must manage your stamina and health well if you expect to last all 7 days");
             Console.WriteLine("Oh Look! An enemy ... er something");
             TutorialBunny tb = new TutorialBunny();
             tb.NewBunny();
             while(tb.getHealth() > 0){
-                Console.WriteLine("\n Tutorial Bunny \t HP: {0}", tb.health);
-                switch(Menu(p1)){
+                switch(Menu(p1, tb)){
                     case "1":
                         tb.takeDamage(p1.attackDamage);
                         if(tb.getHealth() < 1){
@@ -73,8 +68,10 @@ namespace Dungeon_Redux
                         break;
                 }
             }
+            Console.WriteLine("\nEh, you get it now right? alright, this is the end of the tutorial. Good Luck, you'll need it.");
         }
-        static string Menu(Player p1){
+        static string Menu(Player p1, Enemy e){
+            Console.WriteLine("\n {0} \t HP: {1}", e.name, e.health);
             Console.WriteLine("\n HP: {0} \t ST: {1} \t Potions: {2}", p1.health, p1.stamina, p1.numHealthPotions);
             Console.WriteLine("1. Attack");
             Console.WriteLine("2. Use Health Potion");
