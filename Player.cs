@@ -3,22 +3,24 @@ using System;
 namespace Dungeon_Redux
 {
     public class Player{
-        int health; //players health
-        bool dead; //is the player dead
-        int attackDamage; //base attack damage
-        int numHealthPotions; //number of health potions held
+        public int health; //players health
+        int maxHealth; //max health
+        public bool dead; //is the player dead
+        public int attackDamage; //base attack damage
+        public int numHealthPotions; //number of health potions held
         int healthPotionHealAmount; //how strong the health potion is
         int healthPotionDropChance; //how often health potions drop
         int numFood; //how much food the player has
         int foodDropChance; //how often food drops
-        int enemiesKilled; //how many enemies have been defeated 
-        int stamina; //player stamina 
-        bool running; //can you run?
-        int hungerCounter; //how hungry you are
+        public int enemiesKilled; //how many enemies have been defeated 
+        public int stamina; //player stamina 
+        public bool running; //can you run?
+        public int hungerCounter; //how hungry you are
         public void NewPlayer(){ //init player
             health = 100;
+            maxHealth = 100;
             dead = false;
-            attackDamage = 50;
+            attackDamage = 7;
             numHealthPotions = 3;
             healthPotionHealAmount = 35;
             healthPotionDropChance = 60; // percentage
@@ -30,7 +32,13 @@ namespace Dungeon_Redux
             hungerCounter = 0;
         }
         public bool getdead(){
-            return dead;
+            //Console.WriteLine("health = {0}", health);
+            if (health < 1){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         public void hungry(){ //increments hunger counter
             Console.WriteLine("You have become Hungry");
@@ -52,6 +60,15 @@ namespace Dungeon_Redux
             else{
                 Console.WriteLine("You feel slightly fuller");
             }
+        }
+        public void heal(){
+            numHealthPotions--;
+            Console.WriteLine("You now have {0} health potions remaining", numHealthPotions);
+            health = health + healthPotionHealAmount;
+            if(health > maxHealth){
+                health = maxHealth;
+            }
+            Console.WriteLine("You now have {0} health", health);
         }
         public bool die(){
             Console.WriteLine("You Died. \n you killed {0} enemies", enemiesKilled);

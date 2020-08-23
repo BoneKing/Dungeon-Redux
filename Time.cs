@@ -6,7 +6,7 @@ namespace Dungeon_Redux
 {
     class Time
     {
-        int day, hour, minute, second;
+        public int day, hour, minute, second;
         public void initTime()
         {
             day = 1;
@@ -34,21 +34,27 @@ namespace Dungeon_Redux
                 if(second > 59) {
                     minute = minute + 1;
                     second = 0;
-                    Console.WriteLine("Day: "+ day+ " at "+hour+":"+minute);
+                    //Console.WriteLine("Day: "+ day+ " at "+hour+":"+minute);
                 }
                 else if(second < 60) {
                     Thread.Sleep(1);
                     second++;
                 } 
                 //Console.WriteLine("Day: " + day + " at " + hour + ":" + minute + ":" + second);
-            }   
+            } 
+            //return 0;  
         }
         public void printTime(){
             Console.WriteLine("Day {0} at {1}:{2}",day,hour, minute);
         }
         public bool endTime(){
-            Console.WriteLine("End of Day 7, Mission Accomplished!");
-            return true;
+            if(day > 7){
+                Console.WriteLine("End of Day 7, Mission Accomplished!");
+                return true;
+            }
+            else{
+                return false;
+            }
         }
         public int getDay(){
             return day;
