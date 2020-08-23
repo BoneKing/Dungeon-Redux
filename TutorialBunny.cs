@@ -20,7 +20,7 @@ namespace Dungeon_Redux
         }
         public override void takeDamage(int damage){
             health = health - damage;
-            Console.WriteLine("You hit the Tutrial Bunny, it does {0} damage", damage);
+            Console.WriteLine("You hit the Tutorial Bunny, it does {0} damage", damage);
             if(health < 1){
                 Console.WriteLine("The bunny has been slaughtered, good for you.");
             }

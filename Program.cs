@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Dungeon_Redux
 {
@@ -7,8 +8,10 @@ namespace Dungeon_Redux
     {
         static void Main(string[] args)
         {
+            Random random;
             bool gameRunning = true;
             int score = 0;
+            int numEnemies = 3; //actual num +1;
             /*
             struct HighScore{
                 int highScore = 0;
@@ -31,17 +34,21 @@ namespace Dungeon_Redux
             }
             while (!p1.getdead() && !time.endTime())
             {
-                Console.WriteLine("1. Walk deeper into the cave.");
+                Console.WriteLine("\n1. Walk deeper into the cave.");
                 Console.WriteLine("2. Eat some food.");
                 Console.WriteLine("3. Rest.");
                 Console.WriteLine("4. Quit");
                 switch(Console.ReadLine()){
                     case "1":
-                        TutorialBunny e = new TutorialBunny();
-                        e.NewBunny();
+                        random = new Random();
+                        int whatE = random.Next(1, numEnemies);
+                        //Console.WriteLine("whatE = {0}", whatE);
+                        Enemy e = newEnemy(whatE);
                         Console.WriteLine("You decide to keep walking further into the deps.");
                         Console.WriteLine("All of the sudden you get ambushed by a {0}", e.name);
                         Battle(p1, e);
+                        time.hour += 2;
+                        score++;
                         break;
                     case "2":
                         if(p1.numFood > 0){
@@ -72,6 +79,7 @@ namespace Dungeon_Redux
 
                 }
             }
+            Console.WriteLine("Score: {0}", score);
         }
         static void Tutorial(Player p1){
             Console.WriteLine("\nIn this game you'll find yourself fighting enemies at random times");
@@ -168,5 +176,26 @@ namespace Dungeon_Redux
                 }
             }
         } 
+        static Enemy newEnemy(int index){
+            switch(index){
+                case 1:
+                    Boar b = new Boar();
+                    b.NewBoar();
+                    return b;
+                    break;
+                case 2:
+                    Goblin g = new Goblin();
+                    g.NewGoblin();
+                    return g;
+                    break;
+                default:
+                    Console.WriteLine("ERROR: No enemy found at index {0}", index);
+                    Console.WriteLine("You get a Tutorial Bunny for breaking the game");
+                    TutorialBunny tbBad = new TutorialBunny();
+                    tbBad.NewBunny();
+                    return tbBad;
+                    break; 
+            }
+        }
     }
 }
