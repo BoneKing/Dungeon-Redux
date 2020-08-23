@@ -3,6 +3,7 @@ using System;
 namespace Dungeon_Redux
 {
     public class TutorialBunny : Enemy{
+        Random random;
         public void NewBunny(){
             this.health = 5;
             this.attackDmg = 1;
@@ -12,8 +13,10 @@ namespace Dungeon_Redux
             return health;
         }
         public int Attack(){
-            Console.WriteLine("The Tutorial Bunny Lunges at you in self defense dealing {0} damage", attackDmg);
-            return attackDmg;
+            random = new Random();
+            int dmg = attackDmg + random.Next(0,2);
+            Console.WriteLine("The Tutorial Bunny Lunges at you in self defense dealing {0} damage", dmg);
+            return dmg;
         }
         public void takeDamage(int damage){
             health = health - damage;

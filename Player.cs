@@ -1,8 +1,10 @@
 using System;
 
+
 namespace Dungeon_Redux
 {
     public class Player{
+        Random random;
         public int health; //players health
         int maxHealth; //max health
         public bool dead; //is the player dead
@@ -69,6 +71,11 @@ namespace Dungeon_Redux
                 health = maxHealth;
             }
             Console.WriteLine("You now have {0} health", health);
+        }
+        public int Attack(){
+            random = new Random();
+            int dmg = attackDamage + random.Next(-2,2);
+            return dmg;
         }
         public bool die(){
             Console.WriteLine("You Died. \n you killed {0} enemies", enemiesKilled);

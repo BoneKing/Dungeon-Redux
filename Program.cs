@@ -43,7 +43,7 @@ namespace Dungeon_Redux
             while(tb.getHealth() > 0){
                 switch(Menu(p1, tb)){
                     case "1":
-                        tb.takeDamage(p1.attackDamage);
+                        tb.takeDamage(p1.Attack());
                         if(tb.getHealth() < 1){
                             break;
                         }
@@ -66,6 +66,10 @@ namespace Dungeon_Redux
                     default:
                         Console.WriteLine("What are you stupid!? Pick an actual option");
                         break;
+                }
+                if (p1.health < 1){
+                    Console.WriteLine("WHAT!? YOU DIED IN THE TUTORIAL!? wow ... just wow.");
+                    return;
                 }
             }
             Console.WriteLine("\nEh, you get it now right? alright, this is the end of the tutorial. Good Luck, you'll need it.");
