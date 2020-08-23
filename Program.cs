@@ -11,7 +11,7 @@ namespace Dungeon_Redux
             Random random;
             bool gameRunning = true;
             int score = 0;
-            int numEnemies = 3; //actual num +1;
+            int numEnemies = 4; //actual num +1;
             /*
             struct HighScore{
                 int highScore = 0;
@@ -189,8 +189,8 @@ namespace Dungeon_Redux
                     return g;
                     break;
                 case 3:
-                    SuspiciousRock rock = new SuspiciousRock();
-                    r.NewRock();
+                    SuspicousRock rock = new SuspicousRock();
+                    rock.NewRock();
                     return rock;
                     break;
                 default:

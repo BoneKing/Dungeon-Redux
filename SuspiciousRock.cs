@@ -16,7 +16,7 @@ namespace Dungeon_Redux
         public override int Attack(){
             int dmg = 0;
             random = new Random();
-            deadly = random.Next(500);
+            int deadly = random.Next(500);
             if(deadly == 2){
                 dmg = 999;
                 Console.WriteLine("The Rock is not a Rock! I repeate The Rock is not a ROCK! {0} damage", dmg);
@@ -29,9 +29,9 @@ namespace Dungeon_Redux
         }
         public override void takeDamage(int damage){
             health = health - damage;
-            Console.WriteLine("You struck the Boar, it does {0} damage", damage);
+            Console.WriteLine("You struck the {0}, it does {1} damage", name, damage);
             if(health < 1){
-                Console.WriteLine("The Boar has been slain!");
+                Console.WriteLine("The {0} Shattered", name);
             }
         }
     }   
