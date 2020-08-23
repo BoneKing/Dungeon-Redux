@@ -188,6 +188,11 @@ namespace Dungeon_Redux
                     g.NewGoblin();
                     return g;
                     break;
+                case 3:
+                    SuspiciousRock rock = new SuspiciousRock();
+                    r.NewRock();
+                    return rock;
+                    break;
                 default:
                     Console.WriteLine("ERROR: No enemy found at index {0}", index);
                     Console.WriteLine("You get a Tutorial Bunny for breaking the game");
