@@ -9,16 +9,16 @@ namespace Dungeon_Redux
             this.attackDmg = 1;
             this.name = "Tutorial Bunny";
         }
-        public int getHealth(){
+        public override int getHealth(){
             return health;
         }
-        public int Attack(){
+        public override int Attack(){
             random = new Random();
             int dmg = attackDmg + random.Next(0,2);
             Console.WriteLine("The Tutorial Bunny Lunges at you in self defense dealing {0} damage", dmg);
             return dmg;
         }
-        public void takeDamage(int damage){
+        public override void takeDamage(int damage){
             health = health - damage;
             Console.WriteLine("You hit the Tutrial Bunny, it does {0} damage", damage);
             if(health < 1){

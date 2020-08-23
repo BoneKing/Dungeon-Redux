@@ -12,10 +12,11 @@ namespace Dungeon_Redux
         public int numHealthPotions; //number of health potions held
         int healthPotionHealAmount; //how strong the health potion is
         int healthPotionDropChance; //how often health potions drop
-        int numFood; //how much food the player has
+        public int numFood; //how much food the player has
         int foodDropChance; //how often food drops
         public int enemiesKilled; //how many enemies have been defeated 
         public int stamina; //player stamina 
+        public int speed; //speed stat to get away (maybe dodge later)
         public bool running; //can you run?
         public int hungerCounter; //how hungry you are
         public void NewPlayer(){ //init player
@@ -30,6 +31,7 @@ namespace Dungeon_Redux
             foodDropChance = 40; // percentage
             enemiesKilled = 0; // part of score
             stamina = 5;
+            speed = 5;
             running = true;
             hungerCounter = 0;
         }
