@@ -39,6 +39,12 @@ namespace Dungeon_Redux
             Weapon Fist = new Fists();
             Fist.Create();
             WeaponList[0]=Fist;
+            Weapon EmptySlot = new EmptyWeaponSlot();
+            EmptySlot.Create();
+            WeaponList[1]=EmptySlot;
+            WeaponList[2]=EmptySlot;
+            WeaponList[3]=EmptySlot;
+            WeaponList[4]=EmptySlot;
         }
         public bool getdead(){
             //Console.WriteLine("health = {0}", health);

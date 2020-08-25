@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj": {}
+    "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj": {
+    "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
+        "projectUniqueName": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
         "projectName": "Dungeon-Redux",
-        "projectPath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
-        "packagesPath": "C:\\Users\\sht13\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Dungeon-Redux\\obj\\",
+        "projectPath": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
+        "packagesPath": "/Users/andy/.nuget/packages/",
+        "outputPath": "/Users/andy/Documents/Code/Dungeon-Redux/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sht13\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/andy/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -50,7 +50,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
         }
       }
     }

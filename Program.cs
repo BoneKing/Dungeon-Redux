@@ -132,13 +132,18 @@ namespace Dungeon_Redux
             return Console.ReadLine();
         }
         static int WeaponSelectMenu(Player p1){
-            int index = 0;
-            foreach(Weapon w in p1.WeaponList){
-                Console.WriteLine("{0}. {1}", index+1, w.name);
+            Console.WriteLine("--------- Choose Your Weapon ---------");
+            int index = 1; //what number weapon is it
+            for(int i = 0; i < p1.WeaponList.Length; i++){
+                if(p1.WeaponList[i].name != "Empty"){
+                    Console.WriteLine("{0}. {1}", index, p1.WeaponList[i].name);
+                    index++;
+                }
             }
+            //Console.WriteLine("Out of loop");
             string selStr = Console.ReadLine();
             int selInt = Convert.ToInt32(selStr);
-            return selInt;
+            return selInt-1;
         }
         static void Battle(Player p1, Enemy e){
             while(e.getHealth() > 0){
