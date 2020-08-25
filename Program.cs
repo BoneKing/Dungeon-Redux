@@ -90,7 +90,8 @@ namespace Dungeon_Redux
             while(tb.getHealth() > 0){
                 switch(Menu(p1, tb)){
                     case "1":
-                        tb.takeDamage(p1.Attack());
+                        int weapon = WeaponSelectMenu(p1);
+                        tb.takeDamage(p1.Attack(weapon));
                         if(tb.getHealth() < 1){
                             break;
                         }
@@ -130,11 +131,21 @@ namespace Dungeon_Redux
             Console.WriteLine("4. Run");
             return Console.ReadLine();
         }
+        static int WeaponSelectMenu(Player p1){
+            int index = 0;
+            foreach(Weapon w in p1.WeaponList){
+                Console.WriteLine("{0}. {1}", index+1, w.name);
+            }
+            string selStr = Console.ReadLine();
+            int selInt = Convert.ToInt32(selStr);
+            return selInt;
+        }
         static void Battle(Player p1, Enemy e){
             while(e.getHealth() > 0){
                 switch(Menu(p1, e)){
                     case "1":
-                        e.takeDamage(p1.Attack());
+                        int weapon = WeaponSelectMenu(p1);
+                        e.takeDamage(p1.Attack(weapon));
                         if(e.getHealth() < 1){
                             break;
                         }

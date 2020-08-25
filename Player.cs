@@ -1,5 +1,6 @@
 using System;
-
+using System.Collections; 
+using System.Collections.Generic; 
 
 namespace Dungeon_Redux
 {
@@ -19,6 +20,7 @@ namespace Dungeon_Redux
         public int speed; //speed stat to get away (maybe dodge later)
         public bool running; //can you run?
         public int hungerCounter; //how hungry you are
+        public Weapon[] WeaponList = new Weapon[5];
         public void NewPlayer(){ //init player
             health = 100;
             maxHealth = 100;
@@ -34,6 +36,9 @@ namespace Dungeon_Redux
             speed = 5;
             running = true;
             hungerCounter = 0;
+            Weapon Fist = new Fists();
+            Fist.Create();
+            WeaponList[0]=Fist;
         }
         public bool getdead(){
             //Console.WriteLine("health = {0}", health);
@@ -74,9 +79,10 @@ namespace Dungeon_Redux
             }
             Console.WriteLine("You now have {0} health", health);
         }
-        public int Attack(){
+        public int Attack(int i){
+            Weapon w = WeaponList[i];
             random = new Random();
-            int dmg = attackDamage + random.Next(-2,2);
+            int dmg = w.baseDmg + random.Next(w.lowRange,w.highRange);
             return dmg;
         }
         public bool die(){
