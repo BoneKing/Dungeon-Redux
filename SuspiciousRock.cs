@@ -9,6 +9,7 @@ namespace Dungeon_Redux
             this.health = 1;
             this.attackDmg = 0;
             this.speed = 0;
+            this.dropRate = 0;
         }
         public override int getHealth(){
             return health;
@@ -19,6 +20,7 @@ namespace Dungeon_Redux
             int deadly = random.Next(500);
             if(deadly == 2){
                 dmg = 999;
+                dropRate = 100;
                 Console.WriteLine("The Rock is not a Rock! I repeate The Rock is not a ROCK! {0} damage", dmg);
             }
             else{
@@ -32,6 +34,33 @@ namespace Dungeon_Redux
             Console.WriteLine("You struck the {0}, it does {1} damage", name, damage);
             if(health < 1){
                 Console.WriteLine("The {0} Shattered", name);
+            }
+        }
+        public override int DropItem(){
+            random = new Random();
+            if(random.Next(0,dropRate) <= dropRate){
+                if(random.Next(0,50) <= 50){
+                    return 1; //food
+                }
+                else {
+                    return 1; //health Potion
+                }
+            }
+            else{
+                return 0; //nothing
+            }
+        }
+        public override Weapon DropWeapon(){
+            random = new Random();
+            if(random.Next(0,dropRate) <= dropRate){
+                Weapon wg = new Fists();
+                wg.Create();
+                return wg;
+            }
+            else{
+                Weapon wg = new EmptyWeaponSlot();
+                wg.Create();
+                return wg;
             }
         }
     }   

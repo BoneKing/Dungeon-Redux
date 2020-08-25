@@ -9,6 +9,7 @@ namespace Dungeon_Redux
             this.health = 12;
             this.attackDmg = 5;
             this.speed = 3;
+            this.dropRate = 95; //out of 100
         }
         public override int getHealth(){
             return health;
@@ -24,6 +25,33 @@ namespace Dungeon_Redux
             Console.WriteLine("You struck the Boar, it does {0} damage", damage);
             if(health < 1){
                 Console.WriteLine("The Boar has been slain!");
+            }
+        }
+        public override int DropItem(){
+            random = new Random();
+            if(random.Next(0,dropRate) <= dropRate){
+                if(random.Next(0,50) <= 50){
+                    return 1; //food
+                }
+                else {
+                    return 1; //health Potion
+                }
+            }
+            else{
+                return 0; //nothing
+            }
+        }
+        public override Weapon DropWeapon(){
+            random = new Random();
+            if(random.Next(0,dropRate) <= dropRate){
+                Weapon wg = new Fists();
+                wg.Create();
+                return wg;
+            }
+            else{
+                Weapon wg = new EmptyWeaponSlot();
+                wg.Create();
+                return wg;
             }
         }
     }
