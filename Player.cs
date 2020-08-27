@@ -21,6 +21,7 @@ namespace Dungeon_Redux
         public bool running; //can you run?
         public int hungerCounter; //how hungry you are
         public Weapon[] WeaponList = new Weapon[5];
+        public int score;
         public void NewPlayer(){ //init player
             health = 100;
             maxHealth = 100;
@@ -45,6 +46,7 @@ namespace Dungeon_Redux
             WeaponList[2]=EmptySlot;
             WeaponList[3]=EmptySlot;
             WeaponList[4]=EmptySlot;
+            score = 0;
         }
         public bool getdead(){
             //Console.WriteLine("health = {0}", health);
@@ -95,6 +97,35 @@ namespace Dungeon_Redux
             Console.WriteLine("You Died. \n you killed {0} enemies", enemiesKilled);
             dead = true; 
             return getdead(); 
+        }
+        public void getWeapon(Weapon NewWeapon){
+            for(int i = 0; i < WeaponList.Length; i++){ //replace Empty slot
+                if(WeaponList[i].name == "Empty"){
+                    WeaponList[i] = NewWeapon;
+                    return;
+                }
+            }
+            //if we get here then all slots are filled
+            Console.WriteLine("You are carring as many weapons as you can, you need to drop one to pick the new weapon up.");
+            Console.WriteLine("Which Weapon do you want to get rid of?");
+            int index = 1; //what number weapon is it
+            for(int i = 0; i < WeaponList.Length; i++){
+                if(WeaponList[i].name != "Empty"){
+                    Console.WriteLine("{0}. {1}", index, WeaponList[i].name);
+                    index++;
+                }
+            }
+            //Console.WriteLine("Out of loop");
+            string selStr = Console.ReadLine();
+            int selInt = Convert.ToInt32(selStr);
+            Console.WriteLine("You dropped your {0} and picked up a {1}", WeaponList[selInt].name, NewWeapon.name);
+            WeaponList[selInt] = NewWeapon;
+            /* Console.WriteLine("Are you sure you wish to get rid of {0}", WeaponList[selInt].name);
+            string ans = Console.ReadLine();
+            if(ans == "y"){
+                WeaponList[selInt] = NewWeapon;
+            }
+            */
         }
     }
 }

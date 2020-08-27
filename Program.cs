@@ -10,7 +10,6 @@ namespace Dungeon_Redux
         {
             Random random;
             bool gameRunning = true;
-            int score = 0;
             int numEnemies = 4; //actual num +1;
             /*
             struct HighScore{
@@ -47,8 +46,39 @@ namespace Dungeon_Redux
                         Console.WriteLine("You decide to keep walking further into the deps.");
                         Console.WriteLine("All of the sudden you get ambushed by a {0}", e.name);
                         Battle(p1, e);
+                        if(p1.dead == true){
+                            break;
+                        }
+                        p1.score++;
+                        Console.WriteLine("Score = {0}", p1.score);
+                        int whatToDrop = random.Next(1,3);
+                        if(whatToDrop == 1){
+                            int item = e.DropItem();
+                            if(item == 0){ //no item dropped
+                                Console.WriteLine("Nothin useful was found");
+                                break; 
+                            }
+                            else if(item == 1) { //food dropped
+                                Console.WriteLine("{0} dropped some food!", e.name);
+                                p1.numFood++;
+                            }
+                            else if(item == 2) { //health potion Dropped
+                                Console.WriteLine("{0} dropped a health potion!", e.name);
+                                p1.numHealthPotions++;
+                            }
+                            else {
+                                Console.WriteLine("ERROR: invalid item dropped, item num = {0}", whatToDrop);
+                            }
+                        }
+                        else if(whatToDrop == 2){
+                            Weapon NewWeapon = e.DropWeapon();
+                            Console.WriteLine("{0} dropped a {1}", e.name, NewWeapon.name);
+                            p1.getWeapon(NewWeapon);
+                        }
+                        else{
+                            Console.WriteLine("ERROR: No Drop Option with number {0}", whatToDrop);
+                        }
                         time.hour += 2;
-                        score++;
                         break;
                     case "2":
                         if(p1.numFood > 0){
@@ -79,7 +109,7 @@ namespace Dungeon_Redux
 
                 }
             }
-            Console.WriteLine("Score: {0}", score);
+            Console.WriteLine("Score: {0}", p1.score);
         }
         static void Tutorial(Player p1){
             Console.WriteLine("\nIn this game you'll find yourself fighting enemies at random times");
@@ -143,6 +173,10 @@ namespace Dungeon_Redux
             //Console.WriteLine("Out of loop");
             string selStr = Console.ReadLine();
             int selInt = Convert.ToInt32(selStr);
+            if(selInt >= p1.WeaponList.Length){
+                Console.WriteLine("You reach for an imaginary weapon, get a hold of yourself!");
+                selInt = 1;
+            }
             return selInt-1;
         }
         static void Battle(Player p1, Enemy e){
@@ -171,7 +205,9 @@ namespace Dungeon_Redux
                             if(p1.stamina > 0){
                                 Console.WriteLine("there's an opening and you run for it!");
                                 Console.WriteLine("You made it away!");
-                                p1.stamina = p1.stamina -1;
+                                p1.stamina--;
+                                p1.score--;
+                                return;
                             }
                             else{
                                 Console.WriteLine("You're too tired to run");
@@ -188,6 +224,7 @@ namespace Dungeon_Redux
                 }
                 if (p1.health < 1){
                     Console.WriteLine("Looks like you died.");
+                    p1.dead = true;
                     return;
                 }
             }
@@ -198,24 +235,20 @@ namespace Dungeon_Redux
                     Boar b = new Boar();
                     b.NewBoar();
                     return b;
-                    break;
                 case 2:
                     Goblin g = new Goblin();
                     g.NewGoblin();
                     return g;
-                    break;
                 case 3:
                     SuspicousRock rock = new SuspicousRock();
                     rock.NewRock();
                     return rock;
-                    break;
                 default:
                     Console.WriteLine("ERROR: No enemy found at index {0}", index);
                     Console.WriteLine("You get a Tutorial Bunny for breaking the game");
                     TutorialBunny tbBad = new TutorialBunny();
                     tbBad.NewBunny();
-                    return tbBad;
-                    break; 
+                    return tbBad; 
             }
         }
     }
