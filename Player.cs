@@ -22,6 +22,7 @@ namespace Dungeon_Redux
         public int hungerCounter; //how hungry you are
         public Weapon[] WeaponList = new Weapon[5];
         public int score;
+        public int TotalHourAte; //day and hour as hours since eaten last
         public void NewPlayer(){ //init player
             health = 100;
             maxHealth = 100;
@@ -47,6 +48,7 @@ namespace Dungeon_Redux
             WeaponList[3]=EmptySlot;
             WeaponList[4]=EmptySlot;
             score = 0;
+            TotalHourAte = 0;
         }
         public bool getdead(){
             //Console.WriteLine("health = {0}", health);
@@ -58,7 +60,7 @@ namespace Dungeon_Redux
             }
         }
         public void hungry(){ //increments hunger counter
-            Console.WriteLine("You have become Hungry");
+            Console.WriteLine("\nYou have become Hungry");
             hungerCounter++;
             if(hungerCounter == 4){
                 Console.WriteLine("You're starving!"); 
@@ -69,8 +71,11 @@ namespace Dungeon_Redux
             }
 
         }
-        public void eat(){ //decrements hunger counter
+        public void eat(int day, int hour){ //decrements hunger counter
             hungerCounter--;
+            numFood--;
+            int dayInHours = day*24;
+            TotalHourAte = dayInHours+hour;
             if(hungerCounter < 1){
                 Console.WriteLine("You're belly is filled with food");
             }
@@ -115,9 +120,14 @@ namespace Dungeon_Redux
                     index++;
                 }
             }
+            Console.WriteLine("6. Don't pick up the {0}", NewWeapon.name);
             //Console.WriteLine("Out of loop");
             string selStr = Console.ReadLine();
             int selInt = Convert.ToInt32(selStr);
+            if(selInt == 6){
+                return;
+            }
+            selInt--;
             Console.WriteLine("You dropped your {0} and picked up a {1}", WeaponList[selInt].name, NewWeapon.name);
             WeaponList[selInt] = NewWeapon;
             /* Console.WriteLine("Are you sure you wish to get rid of {0}", WeaponList[selInt].name);
@@ -126,6 +136,17 @@ namespace Dungeon_Redux
                 WeaponList[selInt] = NewWeapon;
             }
             */
+        }
+        public void CalculateHungry(int day, int hour){
+            int daysInHours = day*24;
+            int newHours = daysInHours + hour;
+            if(newHours - 6 > TotalHourAte){
+                hungry();
+                return;
+            }
+            else{
+                return;
+            }
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Dungeon_Redux
                 }
                 if(hour > 23) {
                     day = day +1;
+                    Console.WriteLine("\nStart of Day: {0}\n", day);
                     hour = 0;
                     if (day > 7) {
                         Console.WriteLine("larger than 7");

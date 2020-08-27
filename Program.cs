@@ -33,6 +33,7 @@ namespace Dungeon_Redux
             }
             while (!p1.getdead() && !time.endTime())
             {
+                p1.CalculateHungry(time.day, time.hour);
                 Console.WriteLine("\n1. Walk deeper into the cave.");
                 Console.WriteLine("2. Eat some food.");
                 Console.WriteLine("3. Rest.");
@@ -83,8 +84,7 @@ namespace Dungeon_Redux
                     case "2":
                         if(p1.numFood > 0){
                             Console.WriteLine("You ate some food, it helps keep away the hunger");
-                            p1.numFood--;
-                            p1.hungerCounter--;
+                            p1.eat(time.day, time.hour);
                         }
                         else{
                             Console.WriteLine("You have no food to eat");
@@ -108,6 +108,7 @@ namespace Dungeon_Redux
                         break;
 
                 }
+
             }
             Console.WriteLine("Score: {0}", p1.score);
         }
