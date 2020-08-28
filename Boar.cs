@@ -4,20 +4,36 @@ namespace Dungeon_Redux
 {
     public class Boar : Enemy{
         Random random;
+        public int chargeCounter;
         public void NewBoar(){
             this.name = "Boar";
             this.health = 12;
             this.attackDmg = 5;
             this.speed = 3;
             this.dropRate = 95; //out of 100
+            chargeCounter = 0;
         }
         public override int getHealth(){
             return health;
         }
         public override int Attack(){
             random = new Random();
-            int dmg = attackDmg + random.Next(-2,4);
-            Console.WriteLine("The Boar charges at you in with blood lust in his eyes dealing {0} damage", dmg);
+            int dmg = 0;
+            if(chargeCounter == 1){
+                chargeCounter = 0;
+                Console.WriteLine("The Boar charges at you knocking you to the groung, dealing 10 damage");
+                dmg = 10;
+            }
+            else{ 
+                if(random.Next(0,4) == 3){
+                    chargeCounter++;
+                    Console.WriteLine("The Boar snorts and begins kicking its back legs!");
+                }
+                else{
+                    dmg = attackDmg + random.Next(-2,4);
+                    Console.WriteLine("The Boar charges at you in with blood lust in his eyes dealing {0} damage", dmg);
+                }
+            }
             return dmg;
         }
         public override void takeDamage(int damage){
