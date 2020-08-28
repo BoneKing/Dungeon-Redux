@@ -75,8 +75,13 @@ namespace Dungeon_Redux
                         }
                         else if(whatToDrop == 2){
                             Weapon NewWeapon = e.DropWeapon();
-                            Console.WriteLine("{0} dropped a {1}", e.name, NewWeapon.name);
-                            p1.getWeapon(NewWeapon);
+                            if(NewWeapon.name != "Empty"){
+                                Console.WriteLine("{0} dropped a {1}", e.name, NewWeapon.name);
+                                p1.getWeapon(NewWeapon);
+                            }
+                            else if(NewWeapon.name == "Empty"){
+                                Console.WriteLine("Nothin useful was found");
+                            }
                         }
                         else{
                             Console.WriteLine("ERROR: No Drop Option with number {0}", whatToDrop);
