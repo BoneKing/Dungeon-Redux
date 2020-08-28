@@ -23,6 +23,7 @@ namespace Dungeon_Redux
         public Weapon[] WeaponList = new Weapon[5];
         public int score;
         public int TotalHourAte; //day and hour as hours since eaten last
+        public int waitHungerWarning;
         public void NewPlayer(){ //init player
             health = 100;
             maxHealth = 100;
@@ -49,6 +50,7 @@ namespace Dungeon_Redux
             WeaponList[4]=EmptySlot;
             score = 0;
             TotalHourAte = 0;
+            waitHungerWarning = 0;
         }
         public bool getdead(){
             //Console.WriteLine("health = {0}", health);
@@ -96,6 +98,13 @@ namespace Dungeon_Redux
             Weapon w = WeaponList[i];
             random = new Random();
             int dmg = w.baseDmg + random.Next(w.lowRange,w.highRange);
+            w.durability--;
+            if(w.durability <= 0){
+                Console.WriteLine("\n{0} Broke.", w.name);
+                WeaponList[i] = new EmptyWeaponSlot();
+                WeaponList[i].Create();
+                SortWeaponList();
+            }
             return dmg;
         }
         public bool die(){
@@ -138,14 +147,40 @@ namespace Dungeon_Redux
             */
         }
         public void CalculateHungry(int day, int hour){
-            int daysInHours = day*24;
+            int daysInHours = (day-1)*24;
             int newHours = daysInHours + hour;
-            if(newHours - 6 > TotalHourAte){
-                hungry();
-                return;
+            if(newHours-6 <= 0){
+                newHours = 0;
+            }
+            if(newHours - 6 >= TotalHourAte){ 
+                if(waitHungerWarning %3 == 0){
+                    hungry();
+                    return;
+                }
             }
             else{
                 return;
+            }
+        }
+        public void SortWeaponList(){
+            for(int a = 0; a < 5; a++){
+                int FirstEmptyIndex = -1;
+                for(int i =0; i<WeaponList.Length;i++){
+                    if(WeaponList[i].name == "Empty"){
+                        FirstEmptyIndex = i;
+                        break;
+                    }
+                }
+                if(FirstEmptyIndex == -1){
+                    return;
+                }
+                for(int i = FirstEmptyIndex+1; i<WeaponList.Length; i++){
+                    if(WeaponList[i].name != "Empty"){
+                        WeaponList[FirstEmptyIndex] = WeaponList[i];
+                        WeaponList[i] = new EmptyWeaponSlot();
+                        WeaponList[i].Create();
+                    }
+                }
             }
         }
     }

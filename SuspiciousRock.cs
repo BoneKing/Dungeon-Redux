@@ -53,7 +53,7 @@ namespace Dungeon_Redux
         public override Weapon DropWeapon(){
             random = new Random();
             if(random.Next(0,dropRate) <= dropRate){
-                Weapon wg = new Fists();
+                Weapon wg = new EmptyWeaponSlot();
                 wg.Create();
                 return wg;
             }

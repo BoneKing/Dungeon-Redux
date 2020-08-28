@@ -19,10 +19,10 @@ namespace Dungeon_Redux
             */
             Time time = new Time();
             time.initTime();
-            Thread timeThread = new Thread(new ThreadStart(time.runTime));
-            timeThread.IsBackground = true;
-            timeThread.Start();
-            //time.runTime();
+            //UNCOMMENT THE LINES BELOW TO START THE CLOCK
+            //Thread timeThread = new Thread(new ThreadStart(time.runTime));
+            //timeThread.IsBackground = true;
+            //timeThread.Start();
             Player p1 = new Player();
             p1.NewPlayer();
             //GAME LOOP
@@ -79,7 +79,7 @@ namespace Dungeon_Redux
                         else{
                             Console.WriteLine("ERROR: No Drop Option with number {0}", whatToDrop);
                         }
-                        time.hour += 2;
+                        time.hour++;
                         break;
                     case "2":
                         if(p1.numFood > 0){
@@ -167,6 +167,7 @@ namespace Dungeon_Redux
             int index = 1; //what number weapon is it
             for(int i = 0; i < p1.WeaponList.Length; i++){
                 if(p1.WeaponList[i].name != "Empty"){
+                    Console.WriteLine("NOT EMPTY");
                     Console.WriteLine("{0}. {1}", index, p1.WeaponList[i].name);
                     index++;
                 }
