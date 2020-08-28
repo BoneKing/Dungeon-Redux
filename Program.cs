@@ -9,7 +9,6 @@ namespace Dungeon_Redux
         static void Main(string[] args)
         {
             Random random;
-            bool gameRunning = true;
             int numEnemies = 4; //actual num +1;
             /*
             struct HighScore{
@@ -31,9 +30,12 @@ namespace Dungeon_Redux
             if(Console.ReadLine() == "y"){
                 Tutorial(p1);
             }
-            while (!p1.getdead() && !time.endTime())
+            while (!p1.getdead() || !time.endTime())
             {
                 p1.CalculateHungry(time.day, time.hour);
+                if(p1.dead == true){
+                    break;
+                }
                 Console.WriteLine("\n1. Walk deeper into the cave.");
                 Console.WriteLine("2. Eat some food.");
                 Console.WriteLine("3. Rest.");
@@ -92,8 +94,18 @@ namespace Dungeon_Redux
                         break;
                     case "3":
                         Console.WriteLine("You decide to take a break for a bit");
-                        time.hour+=4;
-                        p1.stamina++;
+                        random = new Random();
+                        int sleepAttack = random.Next(1,21);
+                        if(sleepAttack < 20){
+                            time.hour+=4;
+                            p1.stamina+=2;
+                        }
+                        else{
+                            time.hour+=2;
+                            Console.WriteLine("You hear something in your sleep. You awaken to find you are surrounded by shadowy figures!");
+                            Console.WriteLine("You're able to fend them off but you did take some damage");
+                            p1.health = Convert.ToInt32(Math.Floor(p1.health*.75));
+                        }
                         break;
                     case "4":
                         Console.WriteLine("Are you sure you want to quit? y/n");
@@ -167,7 +179,6 @@ namespace Dungeon_Redux
             int index = 1; //what number weapon is it
             for(int i = 0; i < p1.WeaponList.Length; i++){
                 if(p1.WeaponList[i].name != "Empty"){
-                    Console.WriteLine("NOT EMPTY");
                     Console.WriteLine("{0}. {1}", index, p1.WeaponList[i].name);
                     index++;
                 }

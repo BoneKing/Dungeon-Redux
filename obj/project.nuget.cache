@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yH1dEEa4MP1ezFqMPVNb5UvuzdF0mNUSBLzk97/Fy0eVB7EEcbjEoUBrI7Rh35IiYoywGExSPpO1sSfmRnJcag==",
+  "dgSpecHash": "7tjW3wk/gED3r0b+3jd4pUsg2/ZfqKq67+Y+Ar/i5CNDN7BtV/CPG91EDdGUk9k17HrpzznWa9mOR6pJgXqD8A==",
   "success": true,
-  "projectFilePath": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
+  "projectFilePath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

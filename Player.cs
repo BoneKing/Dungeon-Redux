@@ -12,9 +12,7 @@ namespace Dungeon_Redux
         public int attackDamage; //base attack damage
         public int numHealthPotions; //number of health potions held
         int healthPotionHealAmount; //how strong the health potion is
-        int healthPotionDropChance; //how often health potions drop
         public int numFood; //how much food the player has
-        int foodDropChance; //how often food drops
         public int enemiesKilled; //how many enemies have been defeated 
         public int stamina; //player stamina 
         public int speed; //speed stat to get away (maybe dodge later)
@@ -31,9 +29,7 @@ namespace Dungeon_Redux
             attackDamage = 7;
             numHealthPotions = 3;
             healthPotionHealAmount = 35;
-            healthPotionDropChance = 60; // percentage
             numFood = 0;
-            foodDropChance = 40; // percentage
             enemiesKilled = 0; // part of score
             stamina = 5;
             speed = 5;
@@ -54,7 +50,7 @@ namespace Dungeon_Redux
         }
         public bool getdead(){
             //Console.WriteLine("health = {0}", health);
-            if (health < 1){
+            if (health < 1 || hungerCounter > 4){
                 return true;
             }
             else{
