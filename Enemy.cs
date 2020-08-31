@@ -9,6 +9,7 @@ namespace Dungeon_Redux
         public int dmg; //attackDmg + random range
         public int speed;
         public int dropRate;
+        public abstract void Create();
         public abstract int getHealth();
         public abstract int Attack();
         public abstract void takeDamage(int damage);

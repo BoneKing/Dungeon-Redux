@@ -4,7 +4,7 @@ namespace Dungeon_Redux
 {
     public class SuspicousRock : Enemy{
         Random random;
-        public void NewRock(){
+        public override void Create(){
             this.name= "Suspicous Rock";
             this.health = 1;
             this.attackDmg = 0;

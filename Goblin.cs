@@ -4,7 +4,7 @@ namespace Dungeon_Redux
 {
     public class Goblin : Enemy {
         Random random;
-        public void NewGoblin(){
+        public override void Create(){
             this.name = "Goblin";
             this.health = 15;
             this.attackDmg = 7;

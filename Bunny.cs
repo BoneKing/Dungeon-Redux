@@ -2,12 +2,12 @@ using System;
 
 namespace Dungeon_Redux
 {
-    public class TutorialBunny : Enemy{
+    public class Bunny : Enemy{
         Random random;
         public override void Create(){
             this.health = 5;
             this.attackDmg = 1;
-            this.name = "Tutorial Bunny";
+            this.name = "Bunny";
             this.dropRate = 0;
         }
         public override int getHealth(){
@@ -16,14 +16,14 @@ namespace Dungeon_Redux
         public override int Attack(){
             random = new Random();
             int dmg = attackDmg + random.Next(0,2);
-            Console.WriteLine("The Tutorial Bunny Lunges at you in self defense dealing {0} damage", dmg);
+            Console.WriteLine("The Bunny Lunges at you in self defense dealing {0} damage", dmg);
             return dmg;
         }
         public override void takeDamage(int damage){
             health = health - damage;
-            Console.WriteLine("You hit the Tutorial Bunny, it does {0} damage", damage);
+            Console.WriteLine("You hit the Bunny, it does {0} damage", damage);
             if(health < 1){
-                Console.WriteLine("The bunny has been slaughtered, good for you.");
+                Console.WriteLine("The Bunny has been slaughtered, good for you.");
             }
         }
         public override int DropItem(){
@@ -41,7 +41,7 @@ namespace Dungeon_Redux
             }
         }
         public override Weapon DropWeapon(){
-            Weapon wg = new EmptyWeaponSlot();
+             Weapon wg = new EmptyWeaponSlot();
             wg.Create();
             return wg;
         }

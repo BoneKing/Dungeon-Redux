@@ -2,14 +2,14 @@ using System;
 
 namespace Dungeon_Redux
 {
-    public class Boar : Enemy{
+    public class Wolf : Enemy{
         Random random;
         public int chargeCounter;
         public override void Create(){
-            this.name = "Boar";
-            this.health = 12;
-            this.attackDmg = 5;
-            this.speed = 3;
+            this.name = "Wolf";
+            this.health = 8;
+            this.attackDmg = 9;
+            this.speed = 5;
             this.dropRate = 95; //out of 100
             chargeCounter = 0;
         }
@@ -21,26 +21,26 @@ namespace Dungeon_Redux
             int dmg = 0;
             if(chargeCounter == 1){
                 chargeCounter = 0;
-                Console.WriteLine("The Boar charges at you knocking you to the groung, dealing 10 damage");
-                dmg = 10;
+                Console.WriteLine("The Wolf Lunges for your neck dealing 12 damage");
+                dmg = 12;
             }
             else{ 
                 if(random.Next(0,4) == 3){
                     chargeCounter++;
-                    Console.WriteLine("The Boar snorts and begins kicking its back legs!");
+                    Console.WriteLine("The Wolf howls! Watch out he looks like he's going to do something rash");
                 }
                 else{
                     dmg = attackDmg + random.Next(-2,4);
-                    Console.WriteLine("The Boar charges at you in with blood lust in his eyes dealing {0} damage", dmg);
+                    Console.WriteLine("The Boar tries to bite you, dealing {0} damage", dmg);
                 }
             }
             return dmg;
         }
         public override void takeDamage(int damage){
             health = health - damage;
-            Console.WriteLine("You struck the Boar, it does {0} damage", damage);
+            Console.WriteLine("You struck the Wolf, it does {0} damage", damage);
             if(health < 1){
-                Console.WriteLine("The Boar has been slain!");
+                Console.WriteLine("The Wolf lays motionless on the ground");
             }
         }
         public override int DropItem(){
@@ -58,17 +58,9 @@ namespace Dungeon_Redux
             }
         }
         public override Weapon DropWeapon(){
-            random = new Random();
-            if(random.Next(0,dropRate) <= dropRate){
-                Weapon wg = new TuskDagger();
-                wg.Create();
-                return wg;
-            }
-            else{
-                Weapon wg = new EmptyWeaponSlot();
-                wg.Create();
-                return wg;
-            }
+            Weapon wg = new EmptyWeaponSlot();
+            wg.Create();
+            return wg;
         }
     }
 }

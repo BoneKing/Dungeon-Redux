@@ -43,9 +43,9 @@ namespace Dungeon_Redux
                 switch(Console.ReadLine()){
                     case "1":
                         random = new Random();
-                        int whatE = random.Next(1, numEnemies);
+                        //int whatE = random.Next(1, numEnemies);
                         //Console.WriteLine("whatE = {0}", whatE);
-                        Enemy e = newEnemy(whatE);
+                        Enemy e = newEnemy(time.day);
                         Console.WriteLine("You decide to keep walking further into the deps.");
                         Console.WriteLine("All of the sudden you get ambushed by a {0}", e.name);
                         Battle(p1, e);
@@ -134,7 +134,7 @@ namespace Dungeon_Redux
             Console.WriteLine("you must manage your stamina and health well if you expect to last all 7 days");
             Console.WriteLine("Oh Look! An enemy ... er something");
             TutorialBunny tb = new TutorialBunny();
-            tb.NewBunny();
+            tb.Create();
             while(tb.getHealth() > 0){
                 switch(Menu(p1, tb)){
                     case "1":
@@ -247,25 +247,45 @@ namespace Dungeon_Redux
                 }
             }
         } 
-        static Enemy newEnemy(int index){
+        static Enemy newEnemy(int day){
+            Random random = new Random();
+            int index = 0;
+            if(day > 0 && day < 3){
+                index = random.Next(1,7);
+            }
+            else if(day >= 3 && day < 5){
+                index = random.Next(7, 11);
+            }
             switch(index){
                 case 1:
                     Boar b = new Boar();
-                    b.NewBoar();
+                    b.Create();
                     return b;
                 case 2:
-                    Goblin g = new Goblin();
-                    g.NewGoblin();
+                    Wolf g = new Wolf();
+                    g.Create();
                     return g;
                 case 3:
                     SuspicousRock rock = new SuspicousRock();
-                    rock.NewRock();
+                    rock.Create();
                     return rock;
+                case 4:
+                    Bats bats = new Bats();
+                    bats.Create();
+                    return bats;
+                case 5:
+                    Bunny bun = new Bunny();
+                    bun.Create();
+                    return bun;
+                case 6:
+                    Snake s = new Snake();
+                    s.Create();
+                    return s;
                 default:
                     Console.WriteLine("ERROR: No enemy found at index {0}", index);
                     Console.WriteLine("You get a Tutorial Bunny for breaking the game");
                     TutorialBunny tbBad = new TutorialBunny();
-                    tbBad.NewBunny();
+                    tbBad.Create();
                     return tbBad; 
             }
         }
