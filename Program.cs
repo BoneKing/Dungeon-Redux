@@ -45,10 +45,14 @@ namespace Dungeon_Redux
                         random = new Random();
                         //int whatE = random.Next(1, numEnemies);
                         //Console.WriteLine("whatE = {0}", whatE);
-                        Enemy e = newEnemy(time.day);
+                        Enemy e = newEnemy(time.day, time.hour);
                         Console.WriteLine("You decide to keep walking further into the deps.");
                         Console.WriteLine("All of the sudden you get ambushed by a {0}", e.name);
                         Battle(p1, e);
+                        if(e.name.Contains("Boss")){
+                            time.day++;
+                            time.hour = 0;
+                        }
                         if(p1.dead == true){
                             break;
                         }
@@ -87,6 +91,7 @@ namespace Dungeon_Redux
                             Console.WriteLine("ERROR: No Drop Option with number {0}", whatToDrop);
                         }
                         time.hour++;
+                        Console.WriteLine("day {0}:{1}", time.day, time.hour);
                         break;
                     case "2":
                         if(p1.numFood > 0){
@@ -247,14 +252,20 @@ namespace Dungeon_Redux
                 }
             }
         } 
-        static Enemy newEnemy(int day){
+        static Enemy newEnemy(int day, int hour){
             Random random = new Random();
             int index = 0;
             if(day > 0 && day < 3){
-                index = random.Next(1,7);
+                if(day == 2 && hour >= 20){
+                    Console.WriteLine("Bear time");
+                    index = 7;
+                }
+                else{
+                    index = random.Next(1,8);
+                }
             }
             else if(day >= 3 && day < 5){
-                index = random.Next(7, 11);
+                index = random.Next(8, 11);
             }
             switch(index){
                 case 1:
@@ -281,6 +292,10 @@ namespace Dungeon_Redux
                     Snake s = new Snake();
                     s.Create();
                     return s;
+                case 7:
+                    Bear bear = new Bear();
+                    bear.Create();
+                    return bear;
                 default:
                     Console.WriteLine("ERROR: No enemy found at index {0}", index);
                     Console.WriteLine("You get a Tutorial Bunny for breaking the game");

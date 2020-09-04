@@ -2,14 +2,14 @@ using System;
 
 namespace Dungeon_Redux
 {
-    public class Boar : Enemy{
+    public class Bear : Enemy{
         Random random;
         public int chargeCounter;
         public override void Create(){
-            this.name = "Boar";
-            this.health = 12;
-            this.attackDmg = 5;
-            this.speed = 3;
+            this.name = "Boss 1: Bear";
+            this.health = 18;
+            this.attackDmg = 10;
+            this.speed = 999;
             this.dropRate = 95; //out of 100
             chargeCounter = 0;
         }
@@ -19,28 +19,33 @@ namespace Dungeon_Redux
         public override int Attack(){
             random = new Random();
             int dmg = 0;
-            if(chargeCounter == 1){
+            if(chargeCounter == 2){
                 chargeCounter = 0;
-                Console.WriteLine("The Boar charges at you knocking you to the ground, dealing 10 damage");
-                dmg = 10;
+                Console.WriteLine("The Bear slashes you with its huge claws knocking you to the ground, dealing 12 damage");
+                dmg = 20;
             }
             else{ 
+                if(chargeCounter > 0){
+                    chargeCounter++;
+                    Console.WriteLine("The Bear looks like he's going to strike");
+                }
                 if(random.Next(0,4) == 3){
                     chargeCounter++;
-                    Console.WriteLine("The Boar snorts and begins kicking its back legs!");
+                    Console.WriteLine("The Bear roars and stands up right!");
                 }
                 else{
-                    dmg = attackDmg + random.Next(-2,4);
-                    Console.WriteLine("The Boar charges at you in with blood lust in his eyes dealing {0} damage", dmg);
+                    dmg = attackDmg + random.Next(-1,4);
+                    Console.WriteLine("The Boar charges at you in with blood lust in its eyes and foam coming from the mouth dealing {0} damage", dmg);
                 }
             }
             return dmg;
         }
         public override void takeDamage(int damage){
             health = health - damage;
-            Console.WriteLine("You struck the Boar, it does {0} damage", damage);
+            Console.WriteLine("You struck the Bear, it does {0} damage", damage);
             if(health < 1){
-                Console.WriteLine("The Boar has been slain!");
+                Console.WriteLine("The stumbles and collapses to the ground!");
+                Console.WriteLine("You see a path that goes even deeper into the cave, you hear some strange noises and decide to investegate.");
             }
         }
         public override int DropItem(){
@@ -58,17 +63,9 @@ namespace Dungeon_Redux
             }
         }
         public override Weapon DropWeapon(){
-            random = new Random();
-            if(random.Next(0,dropRate) <= dropRate){
-                Weapon wg = new TuskDagger();
-                wg.Create();
-                return wg;
-            }
-            else{
-                Weapon wg = new EmptyWeaponSlot();
-                wg.Create();
-                return wg;
-            }
+            Weapon wg = new Mace();
+            wg.Create();
+            return wg;
         }
     }
 }
