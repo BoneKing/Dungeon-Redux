@@ -297,7 +297,7 @@ namespace Dungeon_Redux
                     bear.Create();
                     return bear;
                 default:
-                    Console.WriteLine("ERROR: No enemy found at index {0}", index);
+                    Console.WriteLine("\nERROR: No enemy found at index {0}", index);
                     Console.WriteLine("You get a Tutorial Bunny for breaking the game");
                     TutorialBunny tbBad = new TutorialBunny();
                     tbBad.Create();
