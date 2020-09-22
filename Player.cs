@@ -29,7 +29,7 @@ namespace Dungeon_Redux
             attackDamage = 7;
             numHealthPotions = 3;
             healthPotionHealAmount = 35;
-            numFood = 0;
+            numFood = 100;
             enemiesKilled = 0; // part of score
             stamina = 5;
             speed = 5;

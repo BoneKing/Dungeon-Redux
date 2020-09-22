@@ -9,7 +9,7 @@ namespace Dungeon_Redux
             this.health = 15;
             this.attackDmg = 7;
             this.speed = 4;
-            this.dropRate = 90;
+            this.dropRate = 80;
         }
         public override int getHealth(){
             return health;
@@ -43,7 +43,7 @@ namespace Dungeon_Redux
         }
         public override Weapon DropWeapon(){
             random = new Random();
-            if(random.Next(0,dropRate) <= dropRate){
+            if(random.Next(0, 100) <= dropRate){
                 Weapon wg = new PointedStick();
                 wg.Create();
                 return wg;

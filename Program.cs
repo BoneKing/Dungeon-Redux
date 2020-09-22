@@ -105,8 +105,8 @@ namespace Dungeon_Redux
                     case "3":
                         Console.WriteLine("You decide to take a break for a bit");
                         random = new Random();
-                        int sleepAttack = random.Next(1,21);
-                        if(sleepAttack < 20){
+                        int sleepAttack = random.Next(0,10);
+                        if(sleepAttack < 8){
                             time.hour+=4;
                             p1.stamina+=2;
                         }
@@ -261,11 +261,22 @@ namespace Dungeon_Redux
                     index = 7;
                 }
                 else{
-                    index = random.Next(1,8);
+                    index = random.Next(1,7);
                 }
             }
             else if(day >= 3 && day < 5){
-                index = random.Next(8, 11);
+                if(day == 4 && hour >= 20){
+                    Console.WriteLine("*You see that the cave comes to a point where 20 foot steel doors stand in your way to the next area.*");
+                    Console.WriteLine("*As you approach the door you hear a deep voice saying 'None shall pass through the gates of Hell without permission!'*");
+                    Console.WriteLine("*Huge flames suddenly appear before the door and a giant red man draped in chains and breathing fire appears, wielding a giant hammer!*");
+                    index = 12;
+                }
+                else{
+                    index = random.Next(8, 12);
+                }
+            }
+            else if(day >= 5 && day < 7){
+                index = random.Next(13, 16);
             }
             switch(index){
                 case 1:
@@ -273,9 +284,9 @@ namespace Dungeon_Redux
                     b.Create();
                     return b;
                 case 2:
-                    Wolf g = new Wolf();
-                    g.Create();
-                    return g;
+                    Wolf w = new Wolf();
+                    w.Create();
+                    return w;
                 case 3:
                     SuspicousRock rock = new SuspicousRock();
                     rock.Create();
@@ -296,6 +307,26 @@ namespace Dungeon_Redux
                     Bear bear = new Bear();
                     bear.Create();
                     return bear;
+                case 8:
+                    SuspicousRock rock2 = new SuspicousRock();
+                    rock2.Create();
+                    return rock2;
+                case 9:
+                    Goblin g = new Goblin();
+                    g.Create();
+                    return g;
+                case 10:
+                    Hobgoblin hg = new Hobgoblin();
+                    hg.Create();
+                    return hg;
+                case 11:
+                    SavageBarbarian sb = new SavageBarbarian();
+                    sb.Create();
+                    return sb;
+                case 12:
+                    HellsGatekeeper HGK = new HellsGatekeeper();
+                    HGK.Create();
+                    return HGK;
                 default:
                     Console.WriteLine("\nERROR: No enemy found at index {0}", index);
                     Console.WriteLine("You get a Tutorial Bunny for breaking the game");

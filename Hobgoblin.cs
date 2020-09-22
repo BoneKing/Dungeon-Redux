@@ -2,15 +2,15 @@ using System;
 
 namespace Dungeon_Redux
 {
-    public class Boar : Enemy{
+    public class Hobgoblin : Enemy{
         Random random;
         public int chargeCounter;
         public override void Create(){
-            this.name = "Boar";
-            this.health = 12;
-            this.attackDmg = 5;
-            this.speed = 3;
-            this.dropRate = 95; //out of 100
+            this.name = "HobGoblin";
+            this.health = 20;
+            this.attackDmg = 14;
+            this.speed = 6;
+            this.dropRate = 80; //out of 100
             chargeCounter = 0;
         }
         public override int getHealth(){
@@ -19,28 +19,26 @@ namespace Dungeon_Redux
         public override int Attack(){
             random = new Random();
             int dmg = 0;
-            if(chargeCounter == 1){
-                chargeCounter = 0;
-                Console.WriteLine("The Boar charges at you knocking you to the ground, dealing 10 damage");
-                dmg = 10;
+            if(random.Next(0,10) == 5){
+                Console.WriteLine("The Hobgoblin leaps into the air and swings his bronze sword at your head!");
+                Console.WriteLine("It hits dealing a massive 30 damage!");
+                return 30;
             }
-            else{ 
-                if(random.Next(0,4) == 3){
-                    chargeCounter++;
-                    Console.WriteLine("The Boar snorts and begins kicking its back legs!");
-                }
-                else{
-                    dmg = attackDmg + random.Next(-2,4);
-                    Console.WriteLine("The Boar charges at you in with blood lust in his eyes dealing {0} damage", dmg);
-                }
+            else if(random.Next(1,3) == 2){
+                Console.WriteLine("The Hobgoblin swings around his broze sword but misses");
+                return 0;
+            }
+            else{
+                dmg = attackDmg + random.Next(-10,2);
+                Console.WriteLine("The Hobgoblin sloppily swings his bronze sword at you dealing {0} damage", dmg);
             }
             return dmg;
         }
         public override void takeDamage(int damage){
             health = health - damage;
-            Console.WriteLine("You struck the Boar, it does {0} damage", damage);
+            Console.WriteLine("You struck the Hobgoblin, it does {0} damage", damage);
             if(health < 1){
-                Console.WriteLine("The Boar has been slain!");
+                Console.WriteLine("The Hobgoblin falls to the ground, you've defeated the Hobgoblin!");
             }
         }
         public override int DropItem(){
@@ -60,7 +58,7 @@ namespace Dungeon_Redux
         public override Weapon DropWeapon(){
             random = new Random();
             if(random.Next(0, 100) <= dropRate){
-                Weapon wg = new TuskDagger();
+                Weapon wg = new BronzeSword();
                 wg.Create();
                 return wg;
             }

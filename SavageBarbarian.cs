@@ -2,15 +2,15 @@ using System;
 
 namespace Dungeon_Redux
 {
-    public class Wolf : Enemy{
+    public class SavageBarbarian : Enemy{
         Random random;
         public int chargeCounter;
         public override void Create(){
-            this.name = "Wolf";
-            this.health = 8;
-            this.attackDmg = 9;
+            this.name = "Savage Barbarian";
+            this.health = 20;
+            this.attackDmg = 10;
             this.speed = 5;
-            this.dropRate = 95; //out of 100
+            this.dropRate = 80; //out of 100
             chargeCounter = 0;
         }
         public override int getHealth(){
@@ -19,28 +19,25 @@ namespace Dungeon_Redux
         public override int Attack(){
             random = new Random();
             int dmg = 0;
-            if(chargeCounter == 1){
-                chargeCounter = 0;
-                Console.WriteLine("The Wolf Lunges for your neck dealing 12 damage");
-                dmg = 12;
+            if(random.Next(1,3) == 2){
+                Console.WriteLine("The {0} dances around looking for a place to strike, but trips and falls, dealing 4 damage to himself", name);
+                health-=4;
+                if(health < 1){
+                    Console.WriteLine("The Savage's fall looks to have knocked him unconscious, I guess we won?");
+                }
+                return 0;
             }
-            else{ 
-                if(random.Next(0,4) == 3){
-                    chargeCounter++;
-                    Console.WriteLine("The Wolf howls! Watch out he looks like he's going to do something rash");
-                }
-                else{
-                    dmg = attackDmg + random.Next(-2,4);
-                    Console.WriteLine("The Boar tries to bite you, dealing {0} damage", dmg);
-                }
+            else{
+                dmg = attackDmg + random.Next(-8,2);
+                Console.WriteLine("The {0} pokes you with his pointed stick dealing {1} damage", name, dmg);
             }
             return dmg;
         }
         public override void takeDamage(int damage){
             health = health - damage;
-            Console.WriteLine("You struck the Wolf, it does {0} damage", damage);
+            Console.WriteLine("You struck the Savage, it does {0} damage", damage);
             if(health < 1){
-                Console.WriteLine("The Wolf lays motionless on the ground");
+                Console.WriteLine("The savage falls to the ground, and runs on all fours away!");
             }
         }
         public override int DropItem(){

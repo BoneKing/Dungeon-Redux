@@ -2,15 +2,15 @@ using System;
 
 namespace Dungeon_Redux
 {
-    public class Boar : Enemy{
+    public class HellsGatekeeper : Enemy{
         Random random;
         public int chargeCounter;
         public override void Create(){
-            this.name = "Boar";
-            this.health = 12;
-            this.attackDmg = 5;
-            this.speed = 3;
-            this.dropRate = 95; //out of 100
+            this.name = "Boss 2: Hell's Gate Keeper";
+            this.health = 28;
+            this.attackDmg = 19;
+            this.speed = 100;
+            this.dropRate = 101; //out of 100
             chargeCounter = 0;
         }
         public override int getHealth(){
@@ -19,28 +19,29 @@ namespace Dungeon_Redux
         public override int Attack(){
             random = new Random();
             int dmg = 0;
-            if(chargeCounter == 1){
+            if(chargeCounter > 0){
                 chargeCounter = 0;
-                Console.WriteLine("The Boar charges at you knocking you to the ground, dealing 10 damage");
-                dmg = 10;
+                Console.WriteLine("The Gate Keeper Slams his hammer into the ground fracturing it and knocking you into the air and you fall to the gound!");
+                Console.WriteLine("Dealing 30 damage!");
+                dmg = 30;
             }
             else{ 
                 if(random.Next(0,4) == 3){
                     chargeCounter++;
-                    Console.WriteLine("The Boar snorts and begins kicking its back legs!");
+                    Console.WriteLine("The Gate Keeper raises his hammer up above his head, Brace yourself!");
                 }
                 else{
-                    dmg = attackDmg + random.Next(-2,4);
-                    Console.WriteLine("The Boar charges at you in with blood lust in his eyes dealing {0} damage", dmg);
+                    dmg = attackDmg + random.Next(-2,2);
+                    Console.WriteLine("The Gate Keeper Swings his hammer at you dealing {0} damage!", dmg);
                 }
             }
             return dmg;
         }
         public override void takeDamage(int damage){
             health = health - damage;
-            Console.WriteLine("You struck the Boar, it does {0} damage", damage);
+            Console.WriteLine("You strike the Gate Keeper, it does {0} damage", damage);
             if(health < 1){
-                Console.WriteLine("The Boar has been slain!");
+                Console.WriteLine("The Gate Keeper screams and is consumed by flames, The Gate to Hell slowly opens");
             }
         }
         public override int DropItem(){
@@ -59,8 +60,8 @@ namespace Dungeon_Redux
         }
         public override Weapon DropWeapon(){
             random = new Random();
-            if(random.Next(0, 100) <= dropRate){
-                Weapon wg = new TuskDagger();
+            if(random.Next(0,100) <= dropRate){
+                Weapon wg = new WarHammer();
                 wg.Create();
                 return wg;
             }

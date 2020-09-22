@@ -38,7 +38,7 @@ namespace Dungeon_Redux
         }
         public override int DropItem(){
             random = new Random();
-            if(random.Next(0,dropRate) <= dropRate){
+            if(random.Next(0, 100) <= dropRate){
                 if(random.Next(0,50) <= 50){
                     return 1; //food
                 }
