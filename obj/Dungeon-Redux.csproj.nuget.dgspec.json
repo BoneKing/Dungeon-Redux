@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj": {}
+    "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj": {
+    "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
+        "projectUniqueName": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
         "projectName": "Dungeon-Redux",
-        "projectPath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
-        "packagesPath": "C:\\Users\\sht13\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Dungeon-Redux\\obj\\",
+        "projectPath": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
+        "packagesPath": "/Users/andy/.nuget/packages/",
+        "outputPath": "/Users/andy/Documents/Code/Dungeon-Redux/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sht13\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/andy/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -56,7 +50,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.301/RuntimeIdentifierGraph.json"
         }
       }
     }

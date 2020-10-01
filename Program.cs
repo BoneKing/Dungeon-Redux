@@ -276,7 +276,26 @@ namespace Dungeon_Redux
                 }
             }
             else if(day >= 5 && day < 7){
-                index = random.Next(13, 16);
+                if(day == 6 && hour >= 20){
+                    if(random.Next(1,3) == 1){
+                        Console.WriteLine("As you walk deeper into hell you see a 50 ft dog with 3 heads!");
+                        Console.WriteLine("He paces back and forth in from of a bridge that leads even deeper into the depths of hell.");
+                        Console.WriteLine("Welp, we made it this far, might as well go farther.");
+                        index = 17;
+                    }
+                    else{
+                        Console.WriteLine("As you walk deeper into hell you see a 50 ft dog with 3 heads!");
+                        Console.WriteLine("He paces back and forth in front of a bridge that leads even deeper into the depths of hell.");
+                        Console.WriteLine("Welp, we made it this far, might as well go farther.");
+                        Console.WriteLine("Wait! What's that to the left?");
+                        Console.WriteLine("Another bridge! There seems to be some dinosaur, like a Pterodactyl?");
+                        Console.WriteLine("You go and approach the Pterodactyl.");
+                        index = 18;
+                    }
+                }
+                else{
+                    index = random.Next(13, 17);
+                }
             }
             switch(index){
                 case 1:
@@ -327,6 +346,30 @@ namespace Dungeon_Redux
                     HellsGatekeeper HGK = new HellsGatekeeper();
                     HGK.Create();
                     return HGK;
+                case 13: 
+                    Demon De = new Demon();
+                    De.Create();
+                    return De;
+                case 14:
+                    DemonicBoar DB = new DemonicBoar();
+                    DB.Create();
+                    return DB;
+                case 15:
+                    SuspicousRock rock3 = new SuspicousRock();
+                    rock3.Create();
+                    return rock3;
+                case 16:
+                    Pheonix p = new Pheonix();
+                    p.Create();
+                    return p;
+                case 17:
+                    Cerberus C = new Cerberus();
+                    C.Create();
+                    return C;
+                case 18:
+                    Peter peter = new Peter();
+                    peter.Create();
+                    return peter;
                 default:
                     Console.WriteLine("\nERROR: No enemy found at index {0}", index);
                     Console.WriteLine("You get a Tutorial Bunny for breaking the game");

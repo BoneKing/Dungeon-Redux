@@ -9,8 +9,8 @@ namespace Dungeon_Redux
         public int day, hour, minute, second;
         public void initTime()
         {
-            day = 5;
-            hour = 2;
+            day = 6;
+            hour = 21;
             minute = 0;
             //second = 0;
             Console.WriteLine("Day: " + day + " at " + hour + ":" + minute); 
