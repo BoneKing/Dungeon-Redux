@@ -20,9 +20,9 @@ namespace Dungeon_Redux
             Time time = new Time();
             time.initTime();
             //UNCOMMENT THE LINES BELOW TO START THE CLOCK
-            //Thread timeThread = new Thread(new ThreadStart(time.runTime));
-            //timeThread.IsBackground = true;
-            //timeThread.Start();
+            Thread timeThread = new Thread(new ThreadStart(time.runTime));
+            timeThread.IsBackground = true;
+            timeThread.Start();
             Player p1 = new Player();
             p1.NewPlayer();
             //GAME LOOP
@@ -98,7 +98,7 @@ namespace Dungeon_Redux
                             Console.WriteLine("ERROR: No Drop Option with number {0}", whatToDrop);
                         }
                         time.hour++;
-                        Console.WriteLine("day {0}:{1}", time.day, time.hour);
+                        Console.WriteLine("day {0} at hour {1}", time.day, time.hour);
                         break;
                     case "2":
                         if(p1.numFood > 0){
@@ -114,8 +114,14 @@ namespace Dungeon_Redux
                         random = new Random();
                         int sleepAttack = random.Next(0,10);
                         if(sleepAttack < 8){
-                            time.hour+=4;
+                            if(time.hour+4 > 23){
+                                time.hour = 23;
+                            }
+                            else{
+                                time.hour+=4;
+                            }
                             p1.stamina+=2;
+                            p1.health+=15;
                         }
                         else{
                             time.hour+=2;

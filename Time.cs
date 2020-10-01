@@ -20,7 +20,7 @@ namespace Dungeon_Redux
             while(day < 8 ) {
                 if(minute > 59) {
                     hour = hour + 1;
-                    Console.WriteLine("\nNEW HOUR: {0}", hour);
+                    //Console.WriteLine("\nNEW HOUR: {0}", hour);
                     minute = 0;
                 }
                 if(hour > 23) {
