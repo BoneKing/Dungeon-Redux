@@ -9,6 +9,7 @@ namespace Dungeon_Redux
         static void Main(string[] args)
         {
             Random random;
+            //bool gameOver = false;
             int numEnemies = 4; //actual num +1;
             /*
             struct HighScore{
@@ -46,7 +47,13 @@ namespace Dungeon_Redux
                         //int whatE = random.Next(1, numEnemies);
                         //Console.WriteLine("whatE = {0}", whatE);
                         Enemy e = newEnemy(time.day, time.hour);
-                        Console.WriteLine("You decide to keep walking further into the deps.");
+                        if(e.name.Contains("Chad")){
+                            FinalBoss(p1, e);
+                            p1.score+=2;
+                            Console.WriteLine("Score = {0}", p1.score);
+                            return;
+                        }
+                        Console.WriteLine("You decide to keep walking further into the depths.");
                         Console.WriteLine("All of the sudden you get ambushed by a {0}", e.name);
                         Battle(p1, e);
                         if(e.name.Contains("Boss")){
@@ -297,6 +304,17 @@ namespace Dungeon_Redux
                     index = random.Next(13, 17);
                 }
             }
+            else if(day > 6){
+                if(day == 7 && hour >= 20){
+                    Console.WriteLine("You see off in the distance a demonic castle.");
+                    Console.WriteLine("You run to it bursting through the gran1d doors into the main hall");
+                    Console.WriteLine("There on a throne you see a huge dark demon king with a crown");
+                    index = 23;
+                }
+                else{
+                    index = random.Next(19, 23);
+                }
+            }
             switch(index){
                 case 1:
                     Boar b = new Boar();
@@ -370,6 +388,26 @@ namespace Dungeon_Redux
                     Peter peter = new Peter();
                     peter.Create();
                     return peter;
+                case 19:
+                    DemonGeneral DG = new DemonGeneral();
+                    DG.Create();
+                    return DG;
+                case 20:
+                    SavageCaveDweller SCD = new SavageCaveDweller();
+                    SCD.Create();
+                    return SCD;
+                case 21:
+                    SuspicousRock rock4 = new SuspicousRock();
+                    rock4.Create();
+                    return rock4;
+                case 22:
+                    Dragon dr = new Dragon();
+                    dr.Create();
+                    return dr;
+                case 23:
+                    Chad chad = new Chad();
+                    chad.Create();
+                    return chad;
                 default:
                     Console.WriteLine("\nERROR: No enemy found at index {0}", index);
                     Console.WriteLine("You get a Tutorial Bunny for breaking the game");
@@ -377,6 +415,27 @@ namespace Dungeon_Redux
                     tbBad.Create();
                     return tbBad; 
             }
+        }
+        static public void FinalBoss(Player p1, Enemy e){
+            Battle(p1, e);
+            if(p1.health < 1){
+                return;
+            }
+            TutorialBunny2 tb2 = new TutorialBunny2();
+            tb2.Create();
+            Battle(p1, tb2);
+            if(p1.health < 1){
+                return;
+            }
+            Console.WriteLine("Chad falls to the floor, having used all of his energy he turns to chrimson dust and blows away");
+            Console.WriteLine("Congrats, you are now the king of Hell.");
+            Console.WriteLine("#############################################");
+            Console.WriteLine("#             Thanks For Playing            #");
+            Console.WriteLine("#        Find this project on GitHub        #");
+            Console.WriteLine("# https://github.com/BoneKing/Dungeon-Redux #");
+            Console.WriteLine("#     This game was made by Andy Mahoney    #");
+            Console.WriteLine("#             Last Updated 10/1/2020        #");
+            Console.WriteLine("#############################################");
         }
     }
 }
