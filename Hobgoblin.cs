@@ -7,6 +7,7 @@ namespace Dungeon_Redux
         public int chargeCounter;
         public override void Create(){
             this.name = "HobGoblin";
+            this.area = 2;
             this.health = 20;
             this.attackDmg = 14;
             this.speed = 6;

@@ -6,6 +6,7 @@ namespace Dungeon_Redux
         Random random;
         public override void Create(){
             this.name = "Goblin";
+            this.area = 2;
             this.health = 15;
             this.attackDmg = 7;
             this.speed = 4;

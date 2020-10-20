@@ -64,6 +64,7 @@ namespace Dungeon_Redux
                             break;
                         }
                         p1.score++;
+                        p1.Exp(1*e.area);
                         Console.WriteLine("Score = {0}", p1.score);
                         int whatToDrop = random.Next(1,3);
                         if(whatToDrop == 1){
@@ -190,7 +191,7 @@ namespace Dungeon_Redux
         }
         static string Menu(Player p1, Enemy e){
             Console.WriteLine("\n {0} \t HP: {1}", e.name, e.health);
-            Console.WriteLine("\n HP: {0} \t ST: {1} \t Potions: {2}", p1.health, p1.stamina, p1.numHealthPotions);
+            Console.WriteLine("\n HP: {0} \t ST: {1} \t Potions: {2} \t Level: {3}", p1.health, p1.stamina, p1.numHealthPotions, p1.Lvl);
             Console.WriteLine("1. Attack");
             Console.WriteLine("2. Use Health Potion");
             Console.WriteLine("3. Defend");
@@ -218,7 +219,7 @@ namespace Dungeon_Redux
         static void Battle(Player p1, Enemy e){
             while(e.getHealth() > 0){
                 switch(Menu(p1, e)){
-                    case "1":
+                    case "1": //Attack 
                         int weapon = WeaponSelectMenu(p1);
                         e.takeDamage(p1.Attack(weapon));
                         if(e.getHealth() < 1){
@@ -226,18 +227,18 @@ namespace Dungeon_Redux
                         }
                         p1.health = p1.health - e.Attack();
                         break;
-                    case "2":
+                    case "2": //Heal
                         if(p1.numHealthPotions > 0){
                             p1.heal();
                         }
                         p1.health = p1.health - e.Attack();
                         break;
-                    case "3":
+                    case "3": //Defend
                         p1.health = p1.health - Convert.ToInt32(Math.Floor((0.5 * e.Attack())));
                         break;
-                    case "4":
+                    case "4": //Run
                         Console.WriteLine("You look around youu for a way out of this fight");
-                        if(p1.speed > e.speed){
+                        if(p1.GetSpeed() > e.speed){
                             if(p1.stamina > 0){
                                 Console.WriteLine("there's an opening and you run for it!");
                                 Console.WriteLine("You made it away!");
@@ -440,7 +441,7 @@ namespace Dungeon_Redux
             Console.WriteLine("#        Find this project on GitHub        #");
             Console.WriteLine("# https://github.com/BoneKing/Dungeon-Redux #");
             Console.WriteLine("#     This game was made by Andy Mahoney    #");
-            Console.WriteLine("#             Last Updated 10/1/2020        #");
+            Console.WriteLine("#            Last Updated 10/20/2020        #");
             Console.WriteLine("#############################################");
         }
     }

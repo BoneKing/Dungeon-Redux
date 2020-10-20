@@ -7,6 +7,7 @@ namespace Dungeon_Redux
         public int chargeCounter;
         public override void Create(){
             this.name = "Savage Cave Dweller";
+            this.area = 2;
             this.health = 20;
             this.attackDmg = 20;
             this.speed = 5;

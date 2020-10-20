@@ -5,7 +5,8 @@ namespace Dungeon_Redux
     public class SuspicousRock : Enemy{
         Random random;
         public override void Create(){
-            this.name= "Suspicous Rock";
+            this.name = "Suspicous Rock";
+            this.area = 1;
             this.health = 1;
             this.attackDmg = 0;
             this.speed = 0;
@@ -20,6 +21,7 @@ namespace Dungeon_Redux
             int deadly = random.Next(500);
             if(deadly == 2){
                 dmg = 999;
+                area = 4;
                 dropRate = 100;
                 Console.WriteLine("The Rock is not a Rock! I repeate The Rock is not a ROCK! {0} damage", dmg);
             }

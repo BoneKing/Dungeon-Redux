@@ -8,6 +8,7 @@ namespace Dungeon_Redux
             this.health = 5;
             this.attackDmg = 1;
             this.name = "Tutorial Bunny";
+            this.area = 1;
             this.dropRate = 0;
         }
         public override int getHealth(){

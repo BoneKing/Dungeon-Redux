@@ -6,6 +6,7 @@ namespace Dungeon_Redux
         Random random;
         public override void Create(){
             this.name = "Swarm of Bats";
+            this.area = 1;
             this.health = 7;
             this.attackDmg = 2;
             this.speed = 7;

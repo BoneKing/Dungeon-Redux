@@ -7,6 +7,7 @@ namespace Dungeon_Redux
         public int chargeCounter;
         public override void Create(){
             this.name = "Boss 2: Hell's Gate Keeper";
+            this.area = 2;
             this.health = 28;
             this.attackDmg = 19;
             this.speed = 100;
