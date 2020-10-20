@@ -23,6 +23,9 @@ namespace Dungeon_Redux
         public int score;
         public int TotalHourAte; //day and hour as hours since eaten last
         public int waitHungerWarning;
+        public int exp;
+        public int expToNextLevel;
+        public int Lvl;
         public void NewPlayer(){ //init player
             health = 100;
             maxHealth = 100;
@@ -48,6 +51,9 @@ namespace Dungeon_Redux
             score = 0;
             TotalHourAte = 0;
             waitHungerWarning = 0;
+            exp = 0;
+            expToNextLevel = 2;
+            Lvl = 1;
             Console.WriteLine("Welcome young traveller! What do you want to be called?");
             name = Console.ReadLine();
             if(name == "Narpas"){
@@ -100,6 +106,11 @@ namespace Dungeon_Redux
                 health = maxHealth;
             }
             Console.WriteLine("You now have {0} health", health);
+        }
+        public int GetSpeed(){
+            int sp = speed + score;
+            Console.WriteLine("Current Speed = {0}", sp);
+            return sp;
         }
         public int Attack(int i){
             Weapon w = WeaponList[i];
@@ -189,6 +200,23 @@ namespace Dungeon_Redux
                     }
                 }
             }
+        }
+        public void Exp(int ToGiveExp){
+            exp += ToGiveExp;
+            if(exp >= expToNextLevel){
+                LevelUp();
+            }
+        }
+        public void LevelUp(){
+            exp = exp - expToNextLevel;
+            expToNextLevel *= 2;
+            maxHealth += 5*Lvl;
+            health = maxHealth;
+            speed++;
+            stamina += 2;
+            attackDamage += 5*Lvl;
+            Lvl++;
+            Console.WriteLine("\n**Leveled Up to Level {0}!**\n", Lvl);
         }
     }
 }

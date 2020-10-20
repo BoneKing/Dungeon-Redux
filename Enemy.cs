@@ -4,6 +4,7 @@ namespace Dungeon_Redux
 {
     public abstract class Enemy{
         public string name;
+        public int area;
         public int health;
         public int attackDmg;
         public int dmg; //attackDmg + random range

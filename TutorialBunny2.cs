@@ -7,6 +7,7 @@ namespace Dungeon_Redux
         public int chargeCounter;
         public override void Create(){
             this.name = "Boss 5: Tutorial Bunny";
+            this.area = 4;
             this.health = 66;
             this.attackDmg = 45;
             this.speed = 100;

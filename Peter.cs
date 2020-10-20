@@ -7,6 +7,7 @@ namespace Dungeon_Redux
         public int chargeCounter;
         public override void Create(){
             this.name = "Boss 3: Peter the Pterodactyl";
+            this.area = 3;
             this.health = 1;
             this.attackDmg = 29;
             this.speed = 100;

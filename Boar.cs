@@ -7,6 +7,7 @@ namespace Dungeon_Redux
         public int chargeCounter;
         public override void Create(){
             this.name = "Boar";
+            this.area = 1;
             this.health = 12;
             this.attackDmg = 5;
             this.speed = 3;
