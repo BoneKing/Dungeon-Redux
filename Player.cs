@@ -6,6 +6,7 @@ namespace Dungeon_Redux
 {
     public class Player{
         Random random;
+        public string name;
         public int health; //players health
         int maxHealth; //max health
         public bool dead; //is the player dead
@@ -47,6 +48,16 @@ namespace Dungeon_Redux
             score = 0;
             TotalHourAte = 0;
             waitHungerWarning = 0;
+            Console.WriteLine("Welcome young traveller! What do you want to be called?");
+            name = Console.ReadLine();
+            if(name == "Narpas"){
+                health = 99999;
+                Weapon SuperSword = new SuperSword();
+                SuperSword.Create();
+                WeaponList[0] = SuperSword;
+                stamina = 999;
+                speed = 999;
+            }
         }
         public bool getdead(){
             //Console.WriteLine("health = {0}", health);
