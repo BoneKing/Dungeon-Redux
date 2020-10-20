@@ -2,7 +2,7 @@ using System;
 
 namespace Dungeon_Redux
 {
-    public class GoldSword : Weapon{
+    public class SuperSword : Weapon{
         public override void Create(){
             this.name = "Super Sword";
             this.baseDmg = 999;
