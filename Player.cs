@@ -56,11 +56,11 @@ namespace Dungeon_Redux
             Lvl = 1;
             Console.WriteLine("Welcome young traveller! What do you want to be called?");
             name = Console.ReadLine();
-            if(name == "Narpas"){
+            if(name == "Narpa"){
                 health = 99999;
-                Weapon SuperSword = new SuperSword();
-                SuperSword.Create();
-                WeaponList[0] = SuperSword;
+                Weapon NarpasSword = new NarpasSword();
+                NarpasSword.Create();
+                WeaponList[0] = NarpasSword;
                 stamina = 999;
                 speed = 999;
             }
