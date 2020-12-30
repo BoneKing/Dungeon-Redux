@@ -26,6 +26,8 @@ namespace Dungeon_Redux
         public int exp;
         public int expToNextLevel;
         public int Lvl;
+        public int AP; 
+        public Dictionary<string, int> stats = new Dictionary<string, int>();
         public void NewPlayer(){ //init player
             health = 100;
             maxHealth = 100;
@@ -54,6 +56,14 @@ namespace Dungeon_Redux
             exp = 0;
             expToNextLevel = 2;
             Lvl = 1;
+            AP = 5;
+            stats.Add("strength", 0);
+            stats.Add("speed", 0);
+            stats.Add("health", 0);
+            stats.Add("defence", 0);
+            stats.Add("magic", 0);
+            stats.Add("precision", 0);
+            stats.Add("luck", 0);
             Console.WriteLine("Welcome young traveller! What do you want to be called?");
             name = Console.ReadLine();
             if(name == "Narpa"){
@@ -108,7 +118,7 @@ namespace Dungeon_Redux
             Console.WriteLine("You now have {0} health", health);
         }
         public int GetSpeed(){
-            int sp = speed + score;
+            int sp = speed + score + Convert.ToInt32(0.33*stats["speed"]);
             Console.WriteLine("Current Speed = {0}", sp);
             return sp;
         }
@@ -123,7 +133,8 @@ namespace Dungeon_Redux
                 WeaponList[i].Create();
                 SortWeaponList();
             }
-            return dmg;
+            int totalDmg = Convert.ToInt32(dmg+(0.33*stats["strength"]));
+            return totalDmg;
         }
         public bool die(){
             Console.WriteLine("You Died. \n you killed {0} enemies", enemiesKilled);
@@ -216,7 +227,41 @@ namespace Dungeon_Redux
             stamina += 2;
             attackDamage += 5*Lvl;
             Lvl++;
+            AP += 5;
             Console.WriteLine("\n**Leveled Up to Level {0}!**\n", Lvl);
+            APPointPlacement();
+        }
+        public void APPointPlacement(){
+            var keys = new List<string>(stats.Keys);
+            int[] statbuffs = new int[7];   
+            int idx = 0;
+            while(AP > 0){
+                Console.WriteLine("Available Attribute Points: {0}", AP);
+                foreach (KeyValuePair<string, int> item in stats)
+                {
+                    int points = 999;
+                    while(points > AP || points < 0){
+                        Console.WriteLine("How many Attribute points would you like to give the {0} attribute?", item.Key);
+                        points = Int32.Parse(Console.ReadLine());
+                        if(points > AP || points < 0){
+                            Console.WriteLine("ERROR: Invalid amount of Attribute Points");
+                        }
+                    }
+                    statbuffs[idx] = points;
+                    idx++;
+                    //item.Value = points;
+                    AP -= points;   
+                }
+                idx = 0;
+                foreach(string key in keys){
+                    stats[key] += statbuffs[idx];
+                    idx++;
+                }
+                foreach (KeyValuePair<string, int> item in stats)
+                {
+                    Console.WriteLine("{0}: {1}", item.Key, item.Value);
+                }
+            }
         }
     }
 }

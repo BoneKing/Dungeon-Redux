@@ -25,6 +25,7 @@ namespace Dungeon_Redux
             timeThread.Start();
             Player p1 = new Player();
             p1.NewPlayer();
+            p1.APPointPlacement();
             //GAME LOOP
             Console.WriteLine("\nWelcome to the Dungeon \n Survive all 7 days to win!");
             Console.WriteLine("\nWould you like the Tutorial? y/n");
@@ -233,7 +234,7 @@ namespace Dungeon_Redux
                         p1.health = p1.health - e.Attack();
                         break;
                     case "3": //Defend
-                        p1.health = p1.health - Convert.ToInt32(Math.Floor((0.5 * e.Attack())));
+                        p1.health = p1.health - Convert.ToInt32(Math.Floor((0.5 * e.Attack())) + (0.33*p1.stats["defence"]));
                         break;
                     case "4": //Run
                         Console.WriteLine("You look around youu for a way out of this fight");
