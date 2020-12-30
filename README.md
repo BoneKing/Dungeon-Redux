@@ -18,7 +18,7 @@
 
 Magic System
 
-Attribute points to give to stats at every level
+~~Attribute points to give to stats at every level~~
 
 Keep track of high scores after stopping the program
 
