@@ -137,7 +137,7 @@ namespace Dungeon_Redux
             return totalDmg;
         }
         public bool die(){
-            Console.WriteLine("You Died. \n you killed {0} enemies", enemiesKilled);
+            Console.WriteLine("You Died.\n");
             dead = true; 
             return getdead(); 
         }
@@ -223,9 +223,7 @@ namespace Dungeon_Redux
             expToNextLevel *= 2;
             maxHealth += 5*Lvl;
             health = maxHealth;
-            speed++;
             stamina += 2;
-            attackDamage += 5*Lvl;
             Lvl++;
             AP += 5;
             Console.WriteLine("\n**Leveled Up to Level {0}!**\n", Lvl);
@@ -234,8 +232,8 @@ namespace Dungeon_Redux
         public void APPointPlacement(){
             var keys = new List<string>(stats.Keys);
             int[] statbuffs = new int[7];   
-            int idx = 0;
             while(AP > 0){
+                int idx = 0;
                 Console.WriteLine("Available Attribute Points: {0}", AP);
                 foreach (KeyValuePair<string, int> item in stats)
                 {
@@ -262,6 +260,16 @@ namespace Dungeon_Redux
                     Console.WriteLine("{0}: {1}", item.Key, item.Value);
                 }
             }
+        }
+        public void BreakFist(){
+            Weapon BF = new BrokenFists();
+            BF.Create();
+            WeaponList[0] = BF;
+        }
+        public void HealFist(){
+           Weapon Fist = new Fists();
+            Fist.Create();
+            WeaponList[0]=Fist;
         }
     }
 }

@@ -116,6 +116,7 @@ namespace Dungeon_Redux
                         random = new Random();
                         int sleepAttack = random.Next(0,10);
                         if(sleepAttack < 8){
+                            p1.HealFist();
                             if(time.hour+4 > 23){
                                 time.hour = 23;
                             }
@@ -184,6 +185,7 @@ namespace Dungeon_Redux
                 }
                 if (p1.health < 1){
                     Console.WriteLine("WHAT!? YOU DIED IN THE TUTORIAL!? wow ... just wow.");
+                    p1.dead = true;
                     return;
                 }
             }
@@ -222,6 +224,10 @@ namespace Dungeon_Redux
                     case "1": //Attack 
                         int weapon = WeaponSelectMenu(p1);
                         e.takeDamage(p1.Attack(weapon));
+                        Console.WriteLine(weapon);
+                        if(e.name == "Suspicous Rock" && weapon == 0){
+                            p1.BreakFist();
+                        }
                         if(e.getHealth() < 1){
                             break;
                         }
