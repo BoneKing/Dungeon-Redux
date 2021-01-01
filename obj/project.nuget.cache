@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "2gbHCYsB/sqaJesWIYDIOKDeS0wrBG8rHSFk/fWVi3mDlga62dlj3Kw3fjU+pJy+XezTXmHBZa7eEtyWx5SnHw==",
+  "dgSpecHash": "hAvsAvBPZQTIWGXYTex3DPeS2xcXcxDq9nqAt7bqeP/AS44YhoQWXMDbRPJ3odv50UHFNtwS+lP0xrnR2zb9Lg==",
   "success": true,
   "projectFilePath": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
   "expectedPackageFiles": [
-    "/Users/andy/.nuget/packages/microsoft.netcore.app.runtime.osx-x64/3.1.9/microsoft.netcore.app.runtime.osx-x64.3.1.9.nupkg.sha512",
-    "/Users/andy/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-x64/3.1.9/microsoft.aspnetcore.app.runtime.osx-x64.3.1.9.nupkg.sha512",
-    "/Users/andy/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.9/microsoft.netcore.app.host.osx-x64.3.1.9.nupkg.sha512",
+    "/Users/andy/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/3.1.9/microsoft.netcore.app.runtime.linux-x64.3.1.9.nupkg.sha512",
+    "/Users/andy/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/3.1.9/microsoft.aspnetcore.app.runtime.linux-x64.3.1.9.nupkg.sha512",
+    "/Users/andy/.nuget/packages/microsoft.netcore.app.host.linux-x64/3.1.9/microsoft.netcore.app.host.linux-x64.3.1.9.nupkg.sha512",
     "/Users/andy/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512"
   ],
   "logs": []
