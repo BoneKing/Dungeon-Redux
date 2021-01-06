@@ -224,7 +224,7 @@ namespace Dungeon_Redux
                     case "1": //Attack 
                         int weapon = WeaponSelectMenu(p1);
                         e.takeDamage(p1.Attack(weapon));
-                        Console.WriteLine(weapon);
+                        //Console.WriteLine(weapon);
                         if(e.name == "Suspicous Rock" && weapon == 0){
                             p1.BreakFist();
                         }

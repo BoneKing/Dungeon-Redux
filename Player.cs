@@ -125,7 +125,14 @@ namespace Dungeon_Redux
         public int Attack(int i){
             Weapon w = WeaponList[i];
             random = new Random();
-            int dmg = w.baseDmg + random.Next(w.lowRange,w.highRange);
+            int dmg = 0;
+            if(random.Next(0,9)+stats["luck"]/5 >= 8){
+                dmg = Convert.ToInt32((w.baseDmg + w.highRange)*1.5);
+                Console.WriteLine("CRITICAL HIT!");
+            }
+            else{
+                dmg = w.baseDmg + random.Next(w.lowRange,w.highRange);
+            }
             w.durability--;
             if(w.durability <= 0){
                 Console.WriteLine("\n{0} Broke.", w.name);
@@ -222,12 +229,13 @@ namespace Dungeon_Redux
             exp = exp - expToNextLevel;
             expToNextLevel *= 2;
             maxHealth += 5*Lvl;
-            health = maxHealth;
             stamina += 2;
             Lvl++;
             AP += 5;
             Console.WriteLine("\n**Leveled Up to Level {0}!**\n", Lvl);
             APPointPlacement();
+            maxHealth += (10 * stats["health"]);
+            health = maxHealth;
         }
         public void APPointPlacement(){
             var keys = new List<string>(stats.Keys);
