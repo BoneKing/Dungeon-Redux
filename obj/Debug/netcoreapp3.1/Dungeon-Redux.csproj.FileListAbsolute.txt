@@ -23,3 +23,16 @@ C:/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.csproj.CoreCompileIn
 C:/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.dll
 C:/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.pdb
 C:/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.genruntimeconfig.cache
+/home/andy/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.csprojAssemblyReference.cache
+/home/andy/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.AssemblyInfoInputs.cache
+/home/andy/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.AssemblyInfo.cs
+/home/andy/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.csproj.CoreCompileInputs.cache
+/home/andy/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.dll
+/home/andy/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.pdb
+/home/andy/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux
+/home/andy/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.deps.json
+/home/andy/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.runtimeconfig.json
+/home/andy/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.runtimeconfig.dev.json
+/home/andy/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.dll
+/home/andy/Code/Dungeon-Redux/bin/Debug/netcoreapp3.1/Dungeon-Redux.pdb
+/home/andy/Code/Dungeon-Redux/obj/Debug/netcoreapp3.1/Dungeon-Redux.genruntimeconfig.cache

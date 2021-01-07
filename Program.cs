@@ -20,9 +20,9 @@ namespace Dungeon_Redux
             Time time = new Time();
             time.initTime();
             //UNCOMMENT THE LINES BELOW TO START THE CLOCK
-            Thread timeThread = new Thread(new ThreadStart(time.runTime));
-            timeThread.IsBackground = true;
-            timeThread.Start();
+            //Thread timeThread = new Thread(new ThreadStart(time.runTime));
+            //timeThread.IsBackground = true;
+            //timeThread.Start();
             Player p1 = new Player();
             p1.NewPlayer();
             p1.APPointPlacement();
@@ -166,15 +166,23 @@ namespace Dungeon_Redux
                         p1.health = p1.health - tb.Attack();
                         break;
                     case "2":
+                        int spell = SpellSelectMenu(p1);
+                        tb.takeDamage(p1.UseSpell(spell));
+                        if(tb.getHealth() < 1){
+                            break;
+                        }
+                        p1.health = p1.health - tb.Attack();
+                        break;
+                    case "3":
                         if(p1.numHealthPotions > 0){
                             p1.heal();
                         }
                         p1.health = p1.health - tb.Attack();
                         break;
-                    case "3":
+                    case "4":
                         p1.health = p1.health - Convert.ToInt32(Math.Floor((0.5 * tb.attackDmg)));
                         break;
-                    case "4":
+                    case "5":
                         Console.WriteLine("Really!? You're running away in a Tutorial Fight!?");
                         Console.WriteLine("I don't think so! Man Up!");
                         p1.health = p1.health - tb.Attack();
@@ -193,11 +201,12 @@ namespace Dungeon_Redux
         }
         static string Menu(Player p1, Enemy e){
             Console.WriteLine("\n {0} \t HP: {1}", e.name, e.health);
-            Console.WriteLine("\n HP: {0} \t ST: {1} \t Potions: {2} \t Level: {3}", p1.health, p1.stamina, p1.numHealthPotions, p1.Lvl);
+            Console.WriteLine("\n HP: {0} \t MP: {1} \t ST: {2} \t Potions: {3} \t Level: {4}", p1.health, p1.MP, p1.stamina, p1.numHealthPotions, p1.Lvl);
             Console.WriteLine("1. Attack");
-            Console.WriteLine("2. Use Health Potion");
-            Console.WriteLine("3. Defend");
-            Console.WriteLine("4. Run");
+            Console.WriteLine("2. Cast a Spell");
+            Console.WriteLine("3. Use Health Potion");
+            Console.WriteLine("4. Defend");
+            Console.WriteLine("5. Run");
             return Console.ReadLine();
         }
         static int WeaponSelectMenu(Player p1){
@@ -218,6 +227,25 @@ namespace Dungeon_Redux
             }
             return selInt-1;
         }
+        static int SpellSelectMenu(Player p1){
+            Console.WriteLine("--------- Choose Your Spell ---------");
+            int index = 1; //what number weapon is it
+            for(int i = 0; i < p1.SpellBook.Length; i++){
+                if(p1.SpellBook[i].name != ""){
+                    Console.WriteLine("{0}. {1} \t {2}", index, p1.SpellBook[i].name, p1.SpellBook[i].description);
+                    index++;
+                }
+            }
+            //Console.WriteLine("Out of loop");
+            string selStr = Console.ReadLine();
+            int selInt = Convert.ToInt32(selStr);
+            if(selInt >= p1.SpellBook.Length){
+                Console.WriteLine("You reach your hand out and shout gibberish... nothing happened...");
+                selInt = 1;
+            }
+            return selInt-1;
+
+        }
         static void Battle(Player p1, Enemy e){
             while(e.getHealth() > 0){
                 switch(Menu(p1, e)){
@@ -233,16 +261,24 @@ namespace Dungeon_Redux
                         }
                         p1.health = p1.health - e.Attack();
                         break;
-                    case "2": //Heal
+                    case "2":
+                        int spell = SpellSelectMenu(p1);
+                        e.takeDamage(p1.UseSpell(spell));
+                        if(e.getHealth() < 1){
+                            break;
+                        }
+                        p1.health = p1.health - e.Attack();
+                        break;
+                    case "3": //Heal
                         if(p1.numHealthPotions > 0){
                             p1.heal();
                         }
                         p1.health = p1.health - e.Attack();
                         break;
-                    case "3": //Defend
+                    case "4": //Defend
                         p1.health = p1.health - Convert.ToInt32(Math.Floor((0.5 * e.Attack())) + (0.33*p1.stats["defence"]));
                         break;
-                    case "4": //Run
+                    case "5": //Run
                         Console.WriteLine("You look around youu for a way out of this fight");
                         if(p1.GetSpeed() > e.speed){
                             if(p1.stamina > 0){

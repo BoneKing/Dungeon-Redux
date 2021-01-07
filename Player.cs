@@ -20,13 +20,15 @@ namespace Dungeon_Redux
         public bool running; //can you run?
         public int hungerCounter; //how hungry you are
         public Weapon[] WeaponList = new Weapon[5];
+        public Spell[] SpellBook = new Spell[5];
         public int score;
         public int TotalHourAte; //day and hour as hours since eaten last
         public int waitHungerWarning;
         public int exp;
         public int expToNextLevel;
         public int Lvl;
-        public int AP; 
+        public int AP;
+        public int MP; 
         public Dictionary<string, int> stats = new Dictionary<string, int>();
         public void NewPlayer(){ //init player
             health = 100;
@@ -50,12 +52,20 @@ namespace Dungeon_Redux
             WeaponList[2]=EmptySlot;
             WeaponList[3]=EmptySlot;
             WeaponList[4]=EmptySlot;
+            Spell Empty = new EmptySpellSlot();
+            Empty.Create();
+            SpellBook[0] = Empty;
+            SpellBook[1] = Empty;
+            SpellBook[2] = Empty;
+            SpellBook[3] = Empty;
+            SpellBook[4] = Empty;
             score = 0;
             TotalHourAte = 0;
             waitHungerWarning = 0;
             exp = 0;
             expToNextLevel = 2;
             Lvl = 1;
+            MP = 25;
             AP = 5;
             stats.Add("strength", 0);
             stats.Add("speed", 0);
@@ -142,6 +152,26 @@ namespace Dungeon_Redux
             }
             int totalDmg = Convert.ToInt32(dmg+(0.33*stats["strength"]));
             return totalDmg;
+        }
+        public int UseSpell(int i){
+            Spell s = SpellBook[i];
+            random = new Random();
+            int dmg = 0;
+            if((random.Next(0, 101) - stats["precision"]) > s.accuracy){ //miss
+                Console.WriteLine("Your spell flies off course and misses!");
+                MP -= s.MPCost;
+                return dmg;
+            }
+            if(random.Next(0,9)+stats["luck"]/5 >= 8){
+                dmg = Convert.ToInt32(s.baseDmg*1.5);
+                Console.WriteLine("CRITICAL HIT!");
+                MP -= s.MPCost;
+                return dmg;
+            }
+            else {
+                MP -= s.MPCost;
+                return s.baseDmg;
+            }
         }
         public bool die(){
             Console.WriteLine("You Died.\n");
@@ -236,6 +266,7 @@ namespace Dungeon_Redux
             APPointPlacement();
             maxHealth += (10 * stats["health"]);
             health = maxHealth;
+            NewSpells(stats["magic"]);
         }
         public void APPointPlacement(){
             var keys = new List<string>(stats.Keys);
@@ -278,6 +309,47 @@ namespace Dungeon_Redux
            Weapon Fist = new Fists();
             Fist.Create();
             WeaponList[0]=Fist;
+        }
+        public void NewSpells(int magic){
+            MP += (4*Lvl);
+            //put higher level spells on top lower on bottom, always return at the bottom of each if. 
+            if(magic >= 3){
+                Console.WriteLine("You have gained the wisdom of the Fire Ball Spell, do you wish to learn it? [y/n]");
+                string r  = Console.ReadLine();
+                if(r == "y"){
+                    Spell fb = new FireBall();
+                    fb.Create();
+                    LearnSpell(fb);
+                }
+                return;
+            }
+        }
+        public void LearnSpell(Spell NewSpell){
+            for(int i = 0; i < SpellBook.Length; i++){ //replace Empty slot
+                if(SpellBook[i].name == ""){
+                    SpellBook[i] = NewSpell;
+                    return;
+                }
+            }
+            //if we get here then all slots are filled
+            Console.WriteLine("You are remembering as many spells as you can, you must forget one.");
+            Console.WriteLine("Which Spell do you want to forget?");
+            int index = 1; //what number spell is it
+            for(int i = 0; i < SpellBook.Length; i++){
+                if(SpellBook[i].name != ""){
+                    Console.WriteLine("{0}. {1}", index, SpellBook[i].name);
+                    index++;
+                }
+            }
+            Console.WriteLine("6. Don't pick up the {0}", NewSpell.name);
+            string selStr = Console.ReadLine();
+            int selInt = Convert.ToInt32(selStr);
+            if(selInt == 6){
+                return;
+            }
+            selInt--;
+            Console.WriteLine("You forgot {0} but learned {1}!", SpellBook[selInt].name, NewSpell.name);
+            SpellBook[selInt] = NewSpell;
         }
     }
 }

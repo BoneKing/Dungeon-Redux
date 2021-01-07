@@ -9,19 +9,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "/Users/andy/.nuget/packages/": {}
+    "/home/andy/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
+      "projectUniqueName": "/home/andy/Code/Dungeon-Redux/Dungeon-Redux.csproj",
       "projectName": "Dungeon-Redux",
-      "projectPath": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
-      "packagesPath": "/Users/andy/.nuget/packages/",
-      "outputPath": "/Users/andy/Documents/Code/Dungeon-Redux/obj/",
+      "projectPath": "/home/andy/Code/Dungeon-Redux/Dungeon-Redux.csproj",
+      "packagesPath": "/home/andy/.nuget/packages/",
+      "outputPath": "/home/andy/Code/Dungeon-Redux/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/andy/.nuget/NuGet/NuGet.Config"
+        "/home/andy/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -31,7 +31,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -43,7 +42,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -56,20 +54,12 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.8, 3.1.8]"
-          },
-          {
             "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-            "version": "[3.1.9, 3.1.9]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.linux-x64",
-            "version": "[3.1.9, 3.1.9]"
+            "version": "[3.1.10, 3.1.10]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.linux-x64",
-            "version": "[3.1.9, 3.1.9]"
+            "version": "[3.1.10, 3.1.10]"
           }
         ],
         "frameworkReferences": {
@@ -77,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.404/RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
