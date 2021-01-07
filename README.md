@@ -16,7 +16,7 @@
 
 ~~EXP and Level Up system~~
 
-Magic System
+~~Magic System~~
 
 ~~Attribute points to give to stats at every level~~
 
