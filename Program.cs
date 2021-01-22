@@ -167,7 +167,12 @@ namespace Dungeon_Redux
                         break;
                     case "2":
                         int spell = SpellSelectMenu(p1);
-                        tb.takeDamage(p1.UseSpell(spell));
+                        if(spell == -1){ //no spells to cast
+                            tb.takeDamage(0);
+                        }
+                        else{
+                            tb.takeDamage(p1.UseSpell(spell));
+                        }
                         if(tb.getHealth() < 1){
                             break;
                         }
@@ -219,8 +224,16 @@ namespace Dungeon_Redux
                 }
             }
             //Console.WriteLine("Out of loop");
-            string selStr = Console.ReadLine();
+            string selStr; 
+            //make sure input is a number
+            while(true){
+                selStr = Console.ReadLine();
+                if(String.Compare(selStr, "0") > 0 && String.Compare(selStr, "9") < 0){
+                    break;
+                }
+            }
             int selInt = Convert.ToInt32(selStr);
+            Console.WriteLine(selInt);
             if(selInt >= p1.WeaponList.Length){
                 Console.WriteLine("You reach for an imaginary weapon, get a hold of yourself!");
                 selInt = 1;
@@ -228,13 +241,17 @@ namespace Dungeon_Redux
             return selInt-1;
         }
         static int SpellSelectMenu(Player p1){
+            int index = 1; //what number spell is it
             Console.WriteLine("--------- Choose Your Spell ---------");
-            int index = 1; //what number weapon is it
             for(int i = 0; i < p1.SpellBook.Length; i++){
                 if(p1.SpellBook[i].name != ""){
                     Console.WriteLine("{0}. {1} \t {2}", index, p1.SpellBook[i].name, p1.SpellBook[i].description);
                     index++;
                 }
+            }
+            if(index == 1){
+                Console.WriteLine("You reach your hand out and shout gibberish... nothing happened...");
+                return -1;
             }
             //Console.WriteLine("Out of loop");
             string selStr = Console.ReadLine();
@@ -244,7 +261,6 @@ namespace Dungeon_Redux
                 selInt = 1;
             }
             return selInt-1;
-
         }
         static void Battle(Player p1, Enemy e){
             while(e.getHealth() > 0){
@@ -263,7 +279,13 @@ namespace Dungeon_Redux
                         break;
                     case "2":
                         int spell = SpellSelectMenu(p1);
-                        e.takeDamage(p1.UseSpell(spell));
+                        Console.WriteLine("spell = {0}", spell);
+                        if(spell == -1){ //no spells to cast
+                            e.takeDamage(0);
+                        }
+                        else{
+                            e.takeDamage(p1.UseSpell(spell));
+                        }
                         if(e.getHealth() < 1){
                             break;
                         }

@@ -273,6 +273,10 @@ namespace Dungeon_Redux
             int[] statbuffs = new int[7];   
             while(AP > 0){
                 int idx = 0;
+                foreach (KeyValuePair<string, int> item in stats)
+                {
+                    Console.WriteLine("{0}: {1}", item.Key, item.Value);
+                }
                 Console.WriteLine("Available Attribute Points: {0}", AP);
                 foreach (KeyValuePair<string, int> item in stats)
                 {

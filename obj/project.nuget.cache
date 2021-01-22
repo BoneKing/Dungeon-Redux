@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O7toQ4PCWlIaq5QPbje7acNi9grMoaV80fyVmfeRgjJCHnBjvCBIdgd/QgZYut4ca5H6b4tmskEr4N4dQj+nQA==",
+  "dgSpecHash": "5oRWhp9JE4Q7dK1yexKAIuZxxkEi7sZMT2g6u8xeGf3vPcPgksxX4ei6gySbjzNuXpcwIWkLY1+MFhgXSbEMyg==",
   "success": true,
-  "projectFilePath": "/home/andy/Code/Dungeon-Redux/Dungeon-Redux.csproj",
-  "expectedPackageFiles": [
-    "/home/andy/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/3.1.10/microsoft.netcore.app.runtime.linux-x64.3.1.10.nupkg.sha512",
-    "/home/andy/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/3.1.10/microsoft.aspnetcore.app.runtime.linux-x64.3.1.10.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
