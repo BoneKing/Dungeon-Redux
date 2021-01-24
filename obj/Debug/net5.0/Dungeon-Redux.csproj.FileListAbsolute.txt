@@ -1,0 +1,16 @@
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\Dungeon-Redux.csprojAssemblyReference.cache
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\Dungeon-Redux.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\Dungeon-Redux.AssemblyInfoInputs.cache
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\Dungeon-Redux.AssemblyInfo.cs
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\Dungeon-Redux.csproj.CoreCompileInputs.cache
+C:\Code\Dungeon-Redux\bin\Debug\net5.0\Dungeon-Redux.exe
+C:\Code\Dungeon-Redux\bin\Debug\net5.0\Dungeon-Redux.deps.json
+C:\Code\Dungeon-Redux\bin\Debug\net5.0\Dungeon-Redux.runtimeconfig.json
+C:\Code\Dungeon-Redux\bin\Debug\net5.0\Dungeon-Redux.runtimeconfig.dev.json
+C:\Code\Dungeon-Redux\bin\Debug\net5.0\Dungeon-Redux.dll
+C:\Code\Dungeon-Redux\bin\Debug\net5.0\ref\Dungeon-Redux.dll
+C:\Code\Dungeon-Redux\bin\Debug\net5.0\Dungeon-Redux.pdb
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\Dungeon-Redux.dll
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\ref\Dungeon-Redux.dll
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\Dungeon-Redux.pdb
+C:\Code\Dungeon-Redux\obj\Debug\net5.0\Dungeon-Redux.genruntimeconfig.cache

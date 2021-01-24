@@ -1,6 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using System.Collections.Generic;
+using Enemies;
+using Weapons;
+using Spells;
 
 namespace Dungeon_Redux
 {
@@ -279,7 +283,7 @@ namespace Dungeon_Redux
                         break;
                     case "2":
                         int spell = SpellSelectMenu(p1);
-                        Console.WriteLine("spell = {0}", spell);
+                        //Console.WriteLine("spell = {0}", spell);
                         if(spell == -1){ //no spells to cast
                             e.takeDamage(0);
                         }
@@ -332,6 +336,8 @@ namespace Dungeon_Redux
         } 
         static Enemy newEnemy(int day, int hour){
             Random random = new Random();
+            //var file = Directory.GetFiles("Enemies","*.cs");
+            //Console.WriteLine("Enemy File = {0}", file);
             int index = 0;
             if(day > 0 && day < 3){
                 if(day == 2 && hour >= 20){
