@@ -81,9 +81,10 @@ namespace Dungeon_Redux
             name = Console.ReadLine();
             if(name == "Narpa"){
                 health = 99999;
+                maxHealth = 99999;
                 Weapon NarpasSword = new NarpasSword();
                 NarpasSword.Create();
-                WeaponList[0] = NarpasSword;
+                WeaponList[1] = NarpasSword;
                 stamina = 999;
                 speed = 999;
             }
@@ -240,7 +241,7 @@ namespace Dungeon_Redux
                         break;
                     }
                 }
-                if(FirstEmptyIndex == -1){
+                if(FirstEmptyIndex == -1 || FirstEmptyIndex == 4){
                     return;
                 }
                 for(int i = FirstEmptyIndex+1; i<WeaponList.Length; i++){
