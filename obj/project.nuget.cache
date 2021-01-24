@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "8v4X7GakMcnYL6YYcc7KvVc/JuUljbGwQYS+dx8Mnv4ZWG3gnalLDuf1YlP76Cl2K7jT0BJNu2qfG0M37qptGA==",
+  "dgSpecHash": "WsWPB/qmU+/NImJgzPp/Md5ESQJ9M8kJhngRrxkAiK+Kso0vxq9QzAFCWBPKOSk9E+v+j8F3q2GPq+bJhDlWzw==",
   "success": true,
   "projectFilePath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\sht13\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\5.0.2\\microsoft.netcore.app.runtime.linux-x64.5.0.2.nupkg.sha512",
+    "C:\\Users\\sht13\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\5.0.2\\microsoft.aspnetcore.app.runtime.linux-x64.5.0.2.nupkg.sha512",
+    "C:\\Users\\sht13\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\5.0.2\\microsoft.netcore.app.host.linux-x64.5.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
