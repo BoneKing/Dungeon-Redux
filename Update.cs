@@ -7,16 +7,17 @@ using System.IO.Compression;
 
 namespace Dungeon_Redux{
     class Update{
-        string Lversion; //local version
+        string Lversion = "0.1.14"; //local version
         string Sversion; //Server Version
         string remoteURI = "http://www.fortrash.com/Dungeon-Redux/";
+        string pwd = Directory.GetCurrentDirectory();
         string fileName;
         //string serverPath = "/var/www/html/Dungeon-Redux/Version.txt";
 
         public void checkVerison(){
             //Get Local Version
-            StreamReader F = new StreamReader("Version.txt");
-            Lversion = F.ReadLine();
+            //StreamReader F = new StreamReader("Version.txt");
+            //Lversion = F.ReadLine();
             Console.WriteLine("Local Version = {0}", Lversion);
             //Get Remote Version
             WebClient client = new WebClient();
@@ -35,6 +36,7 @@ namespace Dungeon_Redux{
                     if(ans == "y"){
                         checkPlatform();
                         downloadNewVersion();
+                        Console.WriteLine("Update Complete!");
                     }
                     break;
                 }
@@ -60,8 +62,9 @@ namespace Dungeon_Redux{
             // Download the Web resource and save it into the current filesystem folder.
             myWebClient.DownloadFile(myStringWebResource,fileName);		
             Console.WriteLine("Successfully Downloaded File \"{0}\" from \"{1}\"", fileName, myStringWebResource);
-            Console.WriteLine("\nDownloaded file saved in the following file system folder:\n\t");
-            ZipFile.ExtractToDirectory(fileName, @"", true);
+            ZipFile.ExtractToDirectory(fileName, pwd, true);
+            Console.WriteLine("Installing {0} in folder {1}", fileName, pwd);
+            Console.WriteLine("Install Complete");
         }
     }
 }
