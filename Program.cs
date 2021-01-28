@@ -24,9 +24,9 @@ namespace Dungeon_Redux
             Time time = new Time();
             time.initTime();
             //UNCOMMENT THE LINES BELOW TO START THE CLOCK
-            //Thread timeThread = new Thread(new ThreadStart(time.runTime));
-            //timeThread.IsBackground = true;
-            //timeThread.Start();
+            Thread timeThread = new Thread(new ThreadStart(time.runTime));
+            timeThread.IsBackground = true;
+            timeThread.Start();
             Player p1 = new Player();
             p1.NewPlayer();
             p1.APPointPlacement();

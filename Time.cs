@@ -39,7 +39,7 @@ namespace Dungeon_Redux
                     //Console.WriteLine("Day: "+ day+ " at "+hour+":"+minute);
                 }
                 else if(second < 60) {
-                    Thread.Sleep(1);
+                    Thread.Sleep(10000);
                     second++;
                 } 
                 //Console.WriteLine("Day: " + day + " at " + hour + ":" + minute + ":" + second);
