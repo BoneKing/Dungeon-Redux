@@ -12,6 +12,10 @@ namespace Dungeon_Redux
     {
         static void Main(string[] args)
         {
+            //Check for Update
+            Update update = new Update();
+            update.checkVerison();
+            //begin game setup
             Random random;
             //bool gameOver = false;
             //int numEnemies = 4; //actual num +1;

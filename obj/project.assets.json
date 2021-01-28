@@ -1,32 +1,38 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {},
-    "net5.0/linux-x64": {}
+    "net5.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
     "net5.0": []
   },
   "packageFolders": {
-    "/Users/andy/.nuget/packages/": {}
+    "C:\\Users\\sht13\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
+      "projectUniqueName": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
       "projectName": "Dungeon-Redux",
-      "projectPath": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
-      "packagesPath": "/Users/andy/.nuget/packages/",
-      "outputPath": "/Users/andy/Documents/Code/Dungeon-Redux/obj/",
+      "projectPath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
+      "packagesPath": "C:\\Users\\sht13\\.nuget\\packages\\",
+      "outputPath": "C:\\Code\\Dungeon-Redux\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "/Users/andy/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\sht13\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -54,31 +60,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-            "version": "[5.0.2, 5.0.2]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.linux-x64",
-            "version": "[5.0.2, 5.0.2]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.linux-x64",
-            "version": "[5.0.2, 5.0.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.102/RuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "linux-x64": {
-        "#import": []
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
