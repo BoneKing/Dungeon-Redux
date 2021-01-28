@@ -32,7 +32,7 @@ namespace Dungeon_Redux{
                 if(Int32.Parse(SV[i]) > Int32.Parse(LV[i])){
                     Console.WriteLine("New version found! Would you like to download it now? [y/n]");
                     string ans = Console.ReadLine();
-                    if(ans = "y"){
+                    if(ans == "y"){
                         checkPlatform();
                         downloadNewVersion();
                     }
@@ -61,7 +61,7 @@ namespace Dungeon_Redux{
             myWebClient.DownloadFile(myStringWebResource,fileName);		
             Console.WriteLine("Successfully Downloaded File \"{0}\" from \"{1}\"", fileName, myStringWebResource);
             Console.WriteLine("\nDownloaded file saved in the following file system folder:\n\t");
-            ExtractToDirectory(fileName, @"", true);
+            ZipFile.ExtractToDirectory(fileName, @"", true);
         }
     }
 }
