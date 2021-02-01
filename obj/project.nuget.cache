@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Tu3NEv8TL61kP6c8eaX5ugm21xGkla8sTCIKU1R0VhW8lmbV2XfbEy6fZ9yndsZ4Kq2EC6KDrreBcOlA4/KY5g==",
+  "dgSpecHash": "WOaZ2LNS65wdGnoifHa0WgVUWrUr/lFIe4m3n2wqln3HSRtPk9Iu5IoqpqWJZVzrzl13NKloN86D6PDV2Rg1Qg==",
   "success": true,
-  "projectFilePath": "/Users/andy/Documents/Code/Dungeon-Redux/Dungeon-Redux.csproj",
+  "projectFilePath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux\\Dungeon-Redux.csproj",
   "expectedPackageFiles": [
-    "/Users/andy/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/5.0.2/microsoft.netcore.app.runtime.linux-x64.5.0.2.nupkg.sha512",
-    "/Users/andy/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/5.0.2/microsoft.aspnetcore.app.runtime.linux-x64.5.0.2.nupkg.sha512",
-    "/Users/andy/.nuget/packages/microsoft.netcore.app.host.linux-x64/5.0.2/microsoft.netcore.app.host.linux-x64.5.0.2.nupkg.sha512"
+    "C:\\Users\\sht13\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\5.0.2\\microsoft.netcore.app.runtime.win-x64.5.0.2.nupkg.sha512",
+    "C:\\Users\\sht13\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\5.0.2\\microsoft.windowsdesktop.app.runtime.win-x64.5.0.2.nupkg.sha512",
+    "C:\\Users\\sht13\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\5.0.2\\microsoft.aspnetcore.app.runtime.win-x64.5.0.2.nupkg.sha512"
   ],
   "logs": []
 }

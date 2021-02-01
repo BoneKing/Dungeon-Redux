@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using Enemies;
 using Weapons;
 using Spells;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace Dungeon_Redux
 {
@@ -13,8 +16,10 @@ namespace Dungeon_Redux
         static void Main(string[] args)
         {
             //Check for Update
-            Update update = new Update();
-            update.checkVerison();
+            //GoToUpdate update = new GoToUpdate();
+            //update.StartUpdater();
+            var updateProcess = System.Diagnostics.Process.Start(@"..\win10-x64-Update\Update.exe");
+            updateProcess.WaitForExit();
             //begin game setup
             Random random;
             //bool gameOver = false;

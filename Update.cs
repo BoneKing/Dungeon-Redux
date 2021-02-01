@@ -1,23 +1,22 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.IO.Compression;
 
-namespace Dungeon_Redux{
-    class Update{
-        string Lversion = "0.1.14"; //local version
-        string Sversion; //Server Version
-        string remoteURI = "http://www.fortrash.com/Dungeon-Redux/";
-        string pwd = Directory.GetCurrentDirectory();
-        string fileName;
+namespace Update{
+    class Program{
         //string serverPath = "/var/www/html/Dungeon-Redux/Version.txt";
-
-        public void checkVerison(){
+        static void Main(string[] args){
             //Get Local Version
             //StreamReader F = new StreamReader("Version.txt");
             //Lversion = F.ReadLine();
+            string Lversion = "0.1.14"; //local version
+            string Sversion; //Server Version
+            string remoteURI = "http://www.fortrash.com/Dungeon-Redux/";
+            string pwd = Directory.GetCurrentDirectory();
+            string fileName;
             Console.WriteLine("Local Version = {0}", Lversion);
             //Get Remote Version
             WebClient client = new WebClient();
@@ -34,18 +33,20 @@ namespace Dungeon_Redux{
                     Console.WriteLine("New version found! Would you like to download it now? [y/n]");
                     string ans = Console.ReadLine();
                     if(ans == "y"){
-                        checkPlatform();
-                        downloadNewVersion();
+                        fileName = checkPlatform();
+                        downloadNewVersion(remoteURI, fileName, pwd);
                         Console.WriteLine("Update Complete!");
                     }
                     break;
                 }
             }
         }
-        public void checkPlatform(){
+        static public string checkPlatform(){
+            string fileName;
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 fileName = "linux-x64.zip";
+                //path = @"../../../../";
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)){
                 fileName = "osx.10.11-x64.zip";
@@ -53,8 +54,9 @@ namespace Dungeon_Redux{
             else{
                 fileName = "win10-x64.zip";
             }
+            return fileName;
         }
-        public void downloadNewVersion(){
+        static public void downloadNewVersion(string remoteURI, string fileName, string pwd){
             WebClient myWebClient = new WebClient();
             // Concatenate the domain with the Web resource filename.
             string myStringWebResource = remoteURI + fileName;
