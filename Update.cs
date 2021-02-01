@@ -46,16 +46,16 @@ namespace Dungeon_Redux{
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 fileName = "linux-x64.zip";
-                tempDir = "/Update/linux-x64";
+                tempDir = "/Update";
                 //path = @"../../../../";
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)){
                 fileName = "osx.10.11-x64.zip";
-                tempDir = "/Update/osx.10.11-x64";
+                tempDir = "/Update";
             }
             else{
                 fileName = "win10-x64.zip";
-                tempDir = @"\Update\win10-x64";
+                tempDir = @"\Update";
             }
         }
         public void downloadNewVersion(string remoteURI, string fileName, string pwd, string tempDir){
@@ -67,21 +67,23 @@ namespace Dungeon_Redux{
             myWebClient.DownloadFile(myStringWebResource,fileName);		
             Console.WriteLine("Successfully Downloaded File \"{0}\" from \"{1}\"", fileName, myStringWebResource);
             Console.WriteLine("Installing {0} in folder {1}", fileName, pwd);
-            ZipFile.ExtractToDirectory(fileName, pwd+tempDir, true);
+            //ZipFile.ExtractToDirectory(fileName, pwd+tempDir, true);
             Assembly currentAssembly = Assembly.GetEntryAssembly();
             if (currentAssembly == null){
                 currentAssembly = Assembly.GetCallingAssembly();
             }
+            ZipFile.ExtractToDirectory(fileName, currentAssembly+tempDir, true);
             Console.WriteLine("TIME TO GET UPDATE FOLDER");
-            string UpdateFolder = Path.GetDirectoryName(currentAssembly+tempDir);
+            string UpdateFolder = Path.GetDirectoryName(pwd+tempDir);
             DirectoryInfo d = new DirectoryInfo(UpdateFolder);
             var destinationFile = "";
+            Console.WriteLine("TIME TO GET FILES");
             foreach (var file in d.GetFiles())
             {
                 Console.WriteLine("suck peen");
                 destinationFile = file.Name;
-            }
-            if (currentAssembly.Location.ToUpper() == destinationFile.ToUpper()){
+                Console.WriteLine("destinationFile = {0}", destinationFile);
+                //if (currentAssembly.Location.ToUpper() == destinationFile.ToUpper()){
                 string appFolder = Path.GetDirectoryName(currentAssembly.Location);
                 string appName = Path.GetFileNameWithoutExtension(currentAssembly.Location);
                 string appExtension = Path.GetExtension(currentAssembly.Location);
@@ -90,10 +92,13 @@ namespace Dungeon_Redux{
                     File.Delete(archivePath);
                 }
                 File.Move(destinationFile, archivePath);
+                Console.WriteLine("Moved {0} into {1}", destinationFile, archivePath);
+                //}
             }
                 //File.Move(destinationFile, archivePath);
                 //ZipFile.ExtractToDirectory(fileName, pwd+tempDir, true);
             Console.WriteLine("Install Complete");
+            Console.ReadLine();
         }
     }
 }
