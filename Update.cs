@@ -89,9 +89,21 @@ namespace Dungeon_Redux{
                 string appExtension = Path.GetExtension(currentAssembly.Location);
                 string archivePath = Path.Combine(appFolder, appName + "_OldVersion" + appExtension);
                 if (File.Exists(archivePath)){
-                    File.Delete(archivePath);
+                    //File.SetAttributes(archivePath, FileAttributes.Normal);
+                    try {
+                        File.Delete(archivePath);
+                    }
+                    catch(Exception e){
+                        Console.WriteLine("Exception thrown in  trying to delete file. {0}", e);
+                    }
                 }
-                File.Move(destinationFile, archivePath);
+                try {
+                    File.Move(destinationFile, archivePath);
+                }
+                catch(Exception e){
+                    Console.WriteLine("Exception thrown in  trying to move file. {0}", e);
+                }
+                //File.SetAttributes(destinationFile, FileAttributes.Normal);
                 Console.WriteLine("Moved {0} into {1}", destinationFile, archivePath);
                 //}
             }
