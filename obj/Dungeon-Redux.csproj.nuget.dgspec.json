@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\Dungeon-Redux\\Dungeon-Redux\\Dungeon-Redux.csproj": {}
+    "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj": {}
   },
   "projects": {
-    "C:\\Code\\Dungeon-Redux\\Dungeon-Redux\\Dungeon-Redux.csproj": {
+    "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux\\Dungeon-Redux.csproj",
+        "projectUniqueName": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
         "projectName": "Dungeon-Redux",
-        "projectPath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux\\Dungeon-Redux.csproj",
+        "projectPath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux.csproj",
         "packagesPath": "C:\\Users\\sht13\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\Dungeon-Redux\\Dungeon-Redux\\obj\\",
+        "outputPath": "C:\\Code\\Dungeon-Redux\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -53,31 +53,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[5.0.2, 5.0.2]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[5.0.2, 5.0.2]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[5.0.2, 5.0.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win10-x64": {
-          "#import": []
         }
       }
     }

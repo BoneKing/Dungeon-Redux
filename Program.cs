@@ -16,10 +16,10 @@ namespace Dungeon_Redux
         static void Main(string[] args)
         {
             //Check for Update
-            //GoToUpdate update = new GoToUpdate();
-            //update.StartUpdater();
-            var updateProcess = System.Diagnostics.Process.Start(@"..\win10-x64-Update\Update.exe");
-            updateProcess.WaitForExit();
+            Update update = new Update();
+            update.StartUpdate();
+            //var updateProcess = System.Diagnostics.Process.Start(@"..\win10-x64-Update\Update.exe");
+            //updateProcess.WaitForExit();
             //begin game setup
             Random random;
             //bool gameOver = false;
